@@ -83,7 +83,7 @@ var SITE = {
                     information. Never publish invented recruitment details.
      ======================================================================= */
   currentAd: {
-    ref: "RRBibps",
+    ref: "RRB",
     category: "Railway Recruitment",
     title: "RRB Recruitment 2026",
     description: "Applications are currently open. Check eligibility, important dates and application details.",
