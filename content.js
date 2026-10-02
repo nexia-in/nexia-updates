@@ -95,7 +95,7 @@ var SITE = {
     expiresOn: "",
     detailsUrl: "",
     detailsText: "View Details",
-    isSample: true
+    isSample: false
   },
 
   /* =======================================================================
