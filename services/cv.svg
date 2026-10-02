@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="CV and Resume creation">
+  <defs>
+    <linearGradient id="cv-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F3F7FE"/><stop offset="1" stop-color="#E1EAF8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#cv-bg)"/>
+  <circle cx="660" cy="90" r="120" fill="#1668E3" fill-opacity=".07"/>
+
+  <g transform="translate(310,88)">
+    <path d="M0 24A24 24 0 0 1 24 0h96l60 60v196a24 24 0 0 1-24 24H24A24 24 0 0 1 0 256z" fill="#FFFFFF" stroke="#0B2545" stroke-width="9" stroke-linejoin="round"/>
+    <path d="M120 0v44a16 16 0 0 0 16 16h44" fill="none" stroke="#0B2545" stroke-width="9" stroke-linejoin="round"/>
+    <circle cx="62" cy="112" r="24" fill="#1668E3" fill-opacity=".18" stroke="#1668E3" stroke-width="8"/>
+    <path d="M32 178c6-22 18-32 30-32s24 10 30 32" fill="none" stroke="#1668E3" stroke-width="8" stroke-linecap="round"/>
+    <g stroke="#B9C6DA" stroke-width="9" stroke-linecap="round">
+      <path d="M112 106h44"/><path d="M112 138h44"/>
+      <path d="M34 214h112"/><path d="M34 244h80"/>
+    </g>
+    <path d="M128 214l14 14 28-30" fill="none" stroke="#E8A33D" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="400" y="452" text-anchor="middle" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#0B2545">CV / Resume Creation</text>
+</svg>

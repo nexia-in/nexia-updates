@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Second sample advertisement placeholder">
+  <defs>
+    <linearGradient id="job-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0F4FB8"/>
+      <stop offset="1" stop-color="#0B2545"/>
+    </linearGradient>
+    <pattern id="job-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0v60" fill="none" stroke="#FFFFFF" stroke-opacity=".07" stroke-width="2"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#job-bg)"/>
+  <rect width="1200" height="675" fill="url(#job-grid)"/>
+  <circle cx="1010" cy="150" r="180" fill="#FFFFFF" fill-opacity=".05"/>
+  <circle cx="1080" cy="560" r="120" fill="#E8A33D" fill-opacity=".12"/>
+
+  <g transform="translate(64,64)">
+    <rect width="300" height="46" rx="23" fill="#FFFFFF" fill-opacity=".12"/>
+    <text x="150" y="30" text-anchor="middle" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#EAF1FB">SAMPLE / DEMO IMAGE</text>
+  </g>
+
+  <text x="64" y="330" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="60" font-weight="700" fill="#FFFFFF">Second advertisement</text>
+  <text x="64" y="384" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="28" fill="#C9D6E8">placeholder for ?ref= links</text>
+
+  <text x="64" y="470" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="21" fill="#9FB3CC">Used by the optional "otherAds" list in content.js.</text>
+  <text x="64" y="504" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="21" fill="#9FB3CC">Replace this file with the real advertisement image.</text>
+</svg>
