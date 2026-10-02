@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Sample advertisement image placeholder">
+  <defs>
+    <linearGradient id="ad-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#123C6E"/>
+      <stop offset="0.55" stop-color="#0B2545"/>
+      <stop offset="1" stop-color="#081A31"/>
+    </linearGradient>
+    <radialGradient id="ad-glow" cx="0.85" cy="0.1" r="0.75">
+      <stop offset="0" stop-color="#1668E3" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#1668E3" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="ad-dots" width="34" height="34" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="3" fill="#FFFFFF" fill-opacity=".07"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#ad-bg)"/>
+  <rect width="1200" height="675" fill="url(#ad-glow)"/>
+  <rect width="1200" height="675" fill="url(#ad-dots)"/>
+
+  <!-- brand line -->
+  <g transform="translate(64,58)">
+    <rect width="46" height="46" rx="12" fill="#FFFFFF" fill-opacity=".12"/>
+    <path d="M14 33V14l18 19V14" fill="none" stroke="#FFFFFF" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round" transform="translate(5,0)"/>
+    <text x="62" y="24" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#FFFFFF">Nexia Virtual Desk</text>
+    <text x="62" y="46" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="15" fill="#9FB3CC">Your online application supporting team</text>
+  </g>
+
+  <!-- demo ribbon -->
+  <g transform="translate(64,232)">
+    <rect width="290" height="46" rx="23" fill="#E8A33D"/>
+    <text x="145" y="30" text-anchor="middle" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#2A1C02">SAMPLE / DEMO IMAGE</text>
+  </g>
+
+  <text x="64" y="360" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="66" font-weight="700" fill="#FFFFFF">Advertisement image</text>
+  <text x="64" y="412" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="30" fill="#C9D6E8">goes here</text>
+
+  <g transform="translate(64,462)">
+    <rect width="640" height="118" rx="18" fill="#FFFFFF" fill-opacity=".07" stroke="#FFFFFF" stroke-opacity=".14"/>
+    <text x="26" y="46" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="21" fill="#EAF1FB">To replace: save your recruitment image as</text>
+    <text x="26" y="78" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#8FD0FF">assets/ads/current-ad.svg  (or .webp / .jpg)</text>
+    <text x="26" y="102" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#9FB3CC">then update the "image" line in content.js — no design change needed.</text>
+  </g>
+</svg>

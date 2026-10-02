@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =====================================================================
+       NEXIA VIRTUAL DESK — index.html
+       ---------------------------------------------------------------------
+       This file is the STRUCTURE (skeleton) of the page.
+       You normally do NOT need to edit it.
+       All text you change often lives in content.js
+       ===================================================================== -->
+  <meta charset="UTF-8">
+
+  <!-- Mobile scaling. Never remove this line. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- ===== SEO: title + description (edit these if your business changes) ===== -->
+  <title>Nexia Virtual Desk | Job Updates &amp; Online Application Support</title>
+  <meta name="description" content="Nexia Virtual Desk provides job and application updates, CV and Resume creation, online application support, printing, DTP and internet cabin services.">
+  <meta name="author" content="Nexia Virtual Desk">
+  <meta name="theme-color" content="#0B2545">
+  <!-- After your site is live, replace "nexia-virtual-desk.vercel.app" below
+       (and in the og:/twitter: lines) with your real domain. -->
+  <link rel="canonical" href="https://nexia-virtual-desk.vercel.app/">
+
+  <!-- ===== Sharing preview: WhatsApp / Facebook / LinkedIn ===== -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nexia Virtual Desk">
+  <meta property="og:title" content="Nexia Virtual Desk | Job Updates &amp; Online Application Support">
+  <meta property="og:description" content="Latest job, exam and application updates plus CV creation, online application support, Print &amp; DTP and Internet Cabin services.">
+  <meta property="og:image" content="https://nexia-virtual-desk.vercel.app/assets/branding/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://nexia-virtual-desk.vercel.app/">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- ===== Sharing preview: X / Twitter ===== -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nexia Virtual Desk | Job Updates &amp; Online Application Support">
+  <meta name="twitter:description" content="Latest job, exam and application updates plus CV creation, online application support, Print &amp; DTP and Internet Cabin services.">
+  <meta name="twitter:image" content="https://nexia-virtual-desk.vercel.app/assets/branding/og-cover.png">
+
+  <!-- ===== Icons (replace these files in assets/branding/ to rebrand) ===== -->
+  <link rel="icon" href="assets/branding/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="assets/branding/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/branding/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Structured data for Google (business name + social profiles) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Nexia Virtual Desk",
+    "description": "Online application support, CV and resume creation, printing, DTP and internet cabin services.",
+    "slogan": "Your online application supporting team",
+    "telephone": "+91-99618-50698",
+    "sameAs": [
+      "https://www.facebook.com/nexiacare",
+      "https://www.instagram.com/nexia_virtual_desk/"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- Accessibility: keyboard users can jump straight to the content -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Shown only when JavaScript is turned off -->
+  <noscript>
+    <div class="noscript-note">
+      This page needs JavaScript to show the current advertisement and the enquiry forms.
+      You can still reach us on WhatsApp: <a href="https://wa.me/919961850698">+91 99618 50698</a>
+    </div>
+  </noscript>
+
+  <!-- =======================================================================
+       1. HEADER
+       ======================================================================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Nexia Virtual Desk — home">
+        <img src="assets/branding/logo.svg" alt="" width="34" height="34" class="brand-mark">
+        <span class="brand-text">
+          <span class="brand-name">Nexia Virtual Desk</span>
+          <span class="brand-tag">Your online application supporting team</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Main">
+        <a href="#opportunity">Updates</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <!-- data-wa-link = script.js fills the real WhatsApp number from content.js -->
+      <a class="btn btn-wa btn-sm header-wa" data-wa-link href="#" rel="noopener">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        <span>WhatsApp</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <!-- =====================================================================
+         2. HERO — brand line + quick contact buttons
+         ===================================================================== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <p class="hero-eyebrow">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          Updates &amp; Services
+        </p>
+        <h1 id="hero-title" class="hero-title">Nexia Virtual Desk</h1>
+        <p class="hero-sub">Your online application supporting team</p>
+
+        <!-- Quick contact / social actions -->
+        <div class="quick-actions">
+          <a class="btn btn-wa btn-lg" data-wa-link href="#" rel="noopener">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            <span>💬 WhatsApp</span>
+          </a>
+          <a class="btn btn-ig" data-social="instagram" href="https://www.instagram.com/nexia_virtual_desk/" target="_blank" rel="noopener" aria-label="Nexia Virtual Desk on Instagram">
+            <span class="qa-ico" aria-hidden="true">📸</span><span class="qa-txt">Instagram</span>
+          </a>
+          <a class="btn btn-fb" data-social="facebook" href="https://www.facebook.com/nexiacare" target="_blank" rel="noopener" aria-label="Nexia Virtual Desk on Facebook">
+            <span class="qa-ico" aria-hidden="true">👍</span><span class="qa-txt">Facebook</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         3. FEATURED CURRENT OPPORTUNITY  (filled from content.js)
+         ===================================================================== -->
+    <section class="section opportunity" id="opportunity" aria-labelledby="opportunity-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="opportunity-title" class="section-title">📢 Currently Open Applications</h2>
+          <p class="section-note">Featured opportunity shared by Nexia Virtual Desk</p>
+        </div>
+
+        <!-- Warning shown only while content.js has isSample: true -->
+        <div class="demo-banner" id="demoBanner" hidden>
+          <strong>⚠️ Demo content.</strong>
+          The details below are sample data used while building this page.
+          Replace them in <code>content.js</code> with verified information, then set
+          <code>isSample: false</code>.
+        </div>
+
+        <!-- The card. script.js writes the title, dates, image and button here. -->
+        <article class="ad-card" id="adCard" aria-live="polite">
+          <div class="ad-media">
+            <img id="adImage" src="assets/placeholder.svg" alt="" loading="eager" decoding="async" width="640" height="360">
+            <span class="ad-status" id="adStatus" hidden></span>
+          </div>
+
+          <div class="ad-body">
+            <div class="ad-meta">
+              <span class="chip chip-cat" id="adCategory"></span>
+              <span class="chip chip-updated" id="adUpdated"></span>
+            </div>
+
+            <h3 class="ad-title" id="adTitle"></h3>
+            <p class="ad-desc" id="adDescription"></p>
+
+            <dl class="ad-dates">
+              <div>
+                <dt>Last Date</dt>
+                <dd id="adLastDate"></dd>
+              </div>
+              <div>
+                <dt>Updated</dt>
+                <dd id="adUpdatedDate"></dd>
+              </div>
+            </dl>
+
+            <div class="ad-actions">
+              <a class="btn btn-primary btn-lg" id="adButton" href="#" target="_blank" rel="noopener">View Details</a>
+              <a class="btn btn-ghost btn-lg" data-wa-message-id="ad" href="#" rel="noopener">
+                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                <span>Ask on WhatsApp</span>
+              </a>
+            </div>
+
+            <p class="ad-verify">Always confirm dates and rules on the official website before applying.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         6. SERVICE TICKER (scrolling strip)
+         ===================================================================== -->
+    <div class="ticker" aria-label="Nexia Virtual Desk services">
+      <div class="ticker-track" id="tickerTrack"><!-- filled by script.js --></div>
+    </div>
+
+    <!-- =====================================================================
+         5. INSTAGRAM — LATEST UPDATES
+         ===================================================================== -->
+    <section class="section" id="updates" aria-labelledby="updates-title">
+      <div class="container">
+        <div class="panel panel-ig">
+          <div class="panel-ig-text">
+            <h2 id="updates-title" class="section-title">📸 Latest Updates</h2>
+            <p>For the latest job, exam and application updates, follow Nexia Virtual Desk on Instagram. New opportunities are posted there first.</p>
+            <a class="btn btn-ig btn-lg" data-social="instagram" href="https://www.instagram.com/nexia_virtual_desk/" target="_blank" rel="noopener">
+              Follow on Instagram
+            </a>
+          </div>
+          <div class="panel-ig-art" aria-hidden="true">
+            <div class="ig-tile ig-tile-1"></div>
+            <div class="ig-tile ig-tile-2"></div>
+            <div class="ig-tile ig-tile-3"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         7. NEXIA SERVICES (cards filled from content.js)
+         ===================================================================== -->
+    <section class="section" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="services-title" class="section-title">Nexia Services</h2>
+          <p class="section-note">Tap any service to send an enquiry on WhatsApp</p>
+        </div>
+
+        <div class="service-grid" id="serviceGrid"><!-- filled by script.js --></div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         10. INTERNET CABIN PROMOTION
+         ===================================================================== -->
+    <section class="section" id="cabin" aria-labelledby="cabin-title">
+      <div class="container">
+        <div class="panel panel-cabin" id="cabinPanel">
+          <div class="cabin-icon" aria-hidden="true">💻</div>
+          <div class="cabin-text">
+            <h2 id="cabin-title" class="section-title">Internet Cabin</h2>
+            <ul class="cabin-list" id="cabinList"><!-- filled by script.js --></ul>
+            <button class="btn btn-primary btn-lg" type="button" data-service-open="internet">Enquire Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =======================================================================
+       11. FOOTER
+       ======================================================================= -->
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="assets/branding/logo.svg" alt="" width="30" height="30">
+          <div>
+            <p class="footer-name">Nexia Virtual Desk</p>
+            <p class="footer-tag">Your online application supporting team</p>
+          </div>
+        </div>
+
+        <ul class="footer-links">
+          <li><a data-wa-link href="#" rel="noopener">💬 WhatsApp</a></li>
+          <li><a data-social="instagram" href="https://www.instagram.com/nexia_virtual_desk/" target="_blank" rel="noopener">📸 Instagram</a></li>
+          <li><a data-social="facebook" href="https://www.facebook.com/nexiacare" target="_blank" rel="noopener">👍 Facebook</a></li>
+        </ul>
+      </div>
+
+      <p class="footer-phone">WhatsApp: <a data-wa-link href="#" rel="noopener"><span data-wa-display>+91 99618 50698</span></a></p>
+      <p class="footer-note" id="footerNote"></p>
+      <p class="footer-copy" id="footerCopy">© 2009–2026 Nexia Virtual Desk</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp button (mobile). Delete this block to remove it. -->
+  <a class="wa-fab" data-wa-link href="#" rel="noopener" aria-label="Chat with Nexia Virtual Desk on WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </a>
+
+  <!-- =======================================================================
+       8. SERVICE ENQUIRY POPUP (bottom sheet on mobile, dialog on desktop)
+       The form fields are built from content.js by script.js
+       ======================================================================= -->
+  <dialog class="sheet" id="enquirySheet" aria-labelledby="sheetTitle">
+    <form class="sheet-form" id="enquiryForm" method="dialog" novalidate>
+      <div class="sheet-grip" aria-hidden="true"></div>
+
+      <div class="sheet-head">
+        <div>
+          <p class="sheet-service" id="sheetServiceName"></p>
+          <h2 class="sheet-title" id="sheetTitle">Enquiry</h2>
+        </div>
+        <button class="sheet-close" type="button" id="sheetClose" aria-label="Close enquiry form">✕</button>
+      </div>
+
+      <div class="sheet-body" id="sheetFields"><!-- fields injected here --></div>
+
+      <p class="sheet-error" id="sheetError" role="alert" hidden></p>
+
+      <div class="sheet-foot">
+        <button class="btn btn-wa btn-lg btn-block" type="submit">💬 Send Enquiry on WhatsApp</button>
+        <p class="sheet-alt">
+          Or <a data-wa-link href="#" rel="noopener">chat directly on WhatsApp</a>
+        </p>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- content.js first (the data), then script.js (the logic). Do not swap them. -->
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

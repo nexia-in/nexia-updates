@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="Online application support">
+  <defs>
+    <linearGradient id="ap-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F3F7FE"/><stop offset="1" stop-color="#E1EAF8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#ap-bg)"/>
+  <circle cx="140" cy="410" r="130" fill="#1668E3" fill-opacity=".07"/>
+
+  <g transform="translate(316,84)">
+    <rect x="0" y="26" width="176" height="252" rx="22" fill="#FFFFFF" stroke="#0B2545" stroke-width="9"/>
+    <rect x="52" y="0" width="72" height="46" rx="14" fill="#0B2545"/>
+    <g stroke="#B9C6DA" stroke-width="9" stroke-linecap="round">
+      <path d="M36 104h104"/><path d="M36 142h104"/><path d="M36 180h64"/>
+    </g>
+    <circle cx="122" cy="212" r="38" fill="#25D366" fill-opacity=".14" stroke="#128C7E" stroke-width="8"/>
+    <path d="M104 212l14 14 26-28" fill="none" stroke="#128C7E" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="400" y="452" text-anchor="middle" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#0B2545">Online Application Support</text>
+</svg>

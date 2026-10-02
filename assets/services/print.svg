@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="Print and DTP services">
+  <defs>
+    <linearGradient id="pr-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F3F7FE"/><stop offset="1" stop-color="#E1EAF8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#pr-bg)"/>
+  <circle cx="670" cy="400" r="120" fill="#1668E3" fill-opacity=".07"/>
+
+  <g transform="translate(288,92)">
+    <!-- paper going in -->
+    <rect x="52" y="0" width="120" height="86" rx="10" fill="#FFFFFF" stroke="#0B2545" stroke-width="8"/>
+    <g stroke="#B9C6DA" stroke-width="7" stroke-linecap="round">
+      <path d="M74 26h76"/><path d="M74 50h52"/>
+    </g>
+    <!-- printer body -->
+    <path d="M28 74h168a28 28 0 0 1 28 28v78a20 20 0 0 1-20 20h-8v-52H28v52h-8a20 20 0 0 1-20-20v-78a28 28 0 0 1 28-28z" fill="#0B2545"/>
+    <circle cx="192" cy="110" r="9" fill="#E8A33D"/>
+    <!-- printed page -->
+    <rect x="52" y="150" width="120" height="130" rx="10" fill="#FFFFFF" stroke="#0B2545" stroke-width="8"/>
+    <g stroke="#1668E3" stroke-width="7" stroke-linecap="round" opacity=".7">
+      <path d="M72 178h80"/><path d="M72 204h80"/><path d="M72 230h52"/>
+    </g>
+  </g>
+  <text x="400" y="452" text-anchor="middle" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#0B2545">Print &amp; DTP</text>
+</svg>
