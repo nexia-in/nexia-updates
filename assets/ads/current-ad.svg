@@ -1,44 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Sample advertisement image placeholder">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" font-family="sans-serif">
   <defs>
-    <linearGradient id="ad-bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#123C6E"/>
-      <stop offset="0.55" stop-color="#0B2545"/>
-      <stop offset="1" stop-color="#081A31"/>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
     </linearGradient>
-    <radialGradient id="ad-glow" cx="0.85" cy="0.1" r="0.75">
-      <stop offset="0" stop-color="#1668E3" stop-opacity=".55"/>
-      <stop offset="1" stop-color="#1668E3" stop-opacity="0"/>
-    </radialGradient>
-    <pattern id="ad-dots" width="34" height="34" patternUnits="userSpaceOnUse">
-      <circle cx="3" cy="3" r="3" fill="#FFFFFF" fill-opacity=".07"/>
-    </pattern>
+    <linearGradient id="card-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
   </defs>
 
-  <rect width="1200" height="675" fill="url(#ad-bg)"/>
-  <rect width="1200" height="675" fill="url(#ad-glow)"/>
-  <rect width="1200" height="675" fill="url(#ad-dots)"/>
+  <!-- Background -->
+  <rect width="640" height="360" fill="url(#bg-grad)"/>
+  <rect x="10" y="10" width="620" height="340" fill="none" stroke="#3b82f6" stroke-width="2" rx="12" opacity="0.5"/>
 
-  <!-- brand line -->
-  <g transform="translate(64,58)">
-    <rect width="46" height="46" rx="12" fill="#FFFFFF" fill-opacity=".12"/>
-    <path d="M14 33V14l18 19V14" fill="none" stroke="#FFFFFF" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round" transform="translate(5,0)"/>
-    <text x="62" y="24" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#FFFFFF">Nexia Virtual Desk</text>
-    <text x="62" y="46" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="15" fill="#9FB3CC">Your online application supporting team</text>
-  </g>
+  <!-- Header -->
+  <text x="320" y="50" font-size="25" font-weight="bold" fill="#facc15" text-anchor="middle">SSC CHSL 2026 വിജ്ഞാപനം എത്തി! 🇮🇳✨</text>
+  <text x="320" y="85" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">പ്ലസ് ടു കഴിഞ്ഞവർക്ക് കേന്ദ്ര സർക്കാർ ജോലി</text>
 
-  <!-- demo ribbon -->
-  <g transform="translate(64,232)">
-    <rect width="290" height="46" rx="23" fill="#E8A33D"/>
-    <text x="145" y="30" text-anchor="middle" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#2A1C02">SAMPLE / DEMO IMAGE</text>
-  </g>
+  <!-- Subtitle -->
+  <text x="320" y="115" font-size="14" fill="#93c5fd" text-anchor="middle">സ്റ്റാഫ് സെലക്ഷൻ കമ്മീഷൻ (SSC) വഴി 2,536 ഒഴിവുകളിലേക്ക് അപേക്ഷ ക്ഷണിച്ചു.</text>
+  <text x="320" y="135" font-size="13" fill="#cbd5e1" text-anchor="middle">(LDC, JSA, Data Entry Operator)</text>
 
-  <text x="64" y="360" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="66" font-weight="700" fill="#FFFFFF">Advertisement image</text>
-  <text x="64" y="412" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="30" fill="#C9D6E8">goes here</text>
+  <!-- Details Grid -->
+  <!-- Qualification Box -->
+  <rect x="25" y="160" width="285" height="80" rx="8" fill="url(#card-grad)" stroke="#334155"/>
+  <text x="40" y="185" font-size="13" fill="#94a3b8">📌 വിദ്യാഭ്യാസ യോഗ്യത:</text>
+  <text x="40" y="215" font-size="17" font-weight="bold" fill="#ffffff">പ്ലസ് ടു (+2 / 12th Pass)</text>
 
-  <g transform="translate(64,462)">
-    <rect width="640" height="118" rx="18" fill="#FFFFFF" fill-opacity=".07" stroke="#FFFFFF" stroke-opacity=".14"/>
-    <text x="26" y="46" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="21" fill="#EAF1FB">To replace: save your recruitment image as</text>
-    <text x="26" y="78" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#8FD0FF">assets/ads/current-ad.svg  (or .webp / .jpg)</text>
-    <text x="26" y="102" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#9FB3CC">then update the "image" line in content.js — no design change needed.</text>
-  </g>
+  <!-- Age Box -->
+  <rect x="330" y="160" width="285" height="80" rx="8" fill="url(#card-grad)" stroke="#334155"/>
+  <text x="345" y="185" font-size="13" fill="#94a3b8">📌 പ്രായപരിധി:</text>
+  <text x="345" y="210" font-size="18" font-weight="bold" fill="#ffffff">18 - 27 വയസ്സ്</text>
+  <text x="345" y="228" font-size="11" fill="#cbd5e1">(സംവരണ വിഭാഗങ്ങൾക്ക് ഇളവുകൾ ബാധകം)</text>
+
+  <!-- Salary Box -->
+  <rect x="25" y="255" width="285" height="80" rx="8" fill="url(#card-grad)" stroke="#334155"/>
+  <text x="40" y="280" font-size="13" fill="#94a3b8">📌 ശമ്പളം:</text>
+  <text x="40" y="310" font-size="17" font-weight="bold" fill="#ffffff">₹30,000/- മുതൽ മുകളിലോട്ട്</text>
+
+  <!-- Date Box -->
+  <rect x="330" y="255" width="285" height="80" rx="8" fill="url(#card-grad)" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="345" y="280" font-size="13" fill="#94a3b8">📌 അവസാന തീയതി:</text>
+  <text x="345" y="310" font-size="18" font-weight="bold" fill="#fca5a5">2026 ഒക്ടോബർ 07</text>
 </svg>

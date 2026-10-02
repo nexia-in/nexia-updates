@@ -56,7 +56,7 @@ var SITE = {
      Replace these values whenever a new recruitment opens.
 
      FIELD GUIDE
-     ref          : short code used in your WhatsApp ad link, e.g. ?ref=ibps
+     ref          : short code used in your WhatsApp ad link, e.g. ?ref=RRB
                     It is added to every enquiry message as "Source: ...".
      category     : small label above the title, e.g. "Banking Recruitment"
      title        : the headline of the opportunity
@@ -83,15 +83,15 @@ var SITE = {
                     information. Never publish invented recruitment details.
      ======================================================================= */
   currentAd: {
-    ref: "ibps",
-    category: "Banking Recruitment",
-    title: "IBPS Recruitment 2026",
+    ref: "RRBibps",
+    category: "Railway Recruitment",
+    title: "RRB Recruitment 2026",
     description: "Applications are currently open. Check eligibility, important dates and application details.",
     image: "assets/ads/current-ad.svg",
-    imageAlt: "IBPS Recruitment 2026 advertisement from Nexia Virtual Desk",
-    lastDate: "2026-10-15",
+    imageAlt: "RRB Recruitment 2026 advertisement from Nexia Virtual Desk",
+    lastDate: "2026-10-08",
     lastDateText: "",
-    updated: "2026-10-02",
+    updated: "2026-10-08",
     expiresOn: "",
     detailsUrl: "",
     detailsText: "View Details",
