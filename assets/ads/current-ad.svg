@@ -1,46 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" font-family="sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
   <defs>
-    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f172a" />
-      <stop offset="100%" stop-color="#1e1b4b" />
-    </linearGradient>
-    <linearGradient id="card-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#1e293b" />
-      <stop offset="100%" stop-color="#0f172a" />
-    </linearGradient>
+    <!-- Define a circular clip path for the logo -->
+    <clipPath id="logo-clip">
+      <circle cx="100" cy="100" r="50" />
+    </clipPath>
   </defs>
 
   <!-- Background -->
-  <rect width="640" height="360" fill="url(#bg-grad)"/>
-  <rect x="10" y="10" width="620" height="340" fill="none" stroke="#3b82f6" stroke-width="2" rx="12" opacity="0.5"/>
+  <rect width="800" height="600" fill="#0A192F" />
+  
+  <!-- Decorative Elements -->
+  <!-- Top left orange accent -->
+  <path d="M 0 0 L 250 0 L 0 250 Z" fill="#F59E0B" />
+  <circle cx="750" cy="500" r="150" fill="#172A45" />
+  <circle cx="650" cy="100" r="30" fill="#1E3A8A" opacity="0.5" />
+  <!-- Left edge half-circle matching the original design -->
+  <path d="M 0 250 A 50 50 0 0 1 0 350 Z" fill="#F59E0B" />
 
-  <!-- Header -->
-  <text x="320" y="50" font-size="25" font-weight="bold" fill="#facc15" text-anchor="middle">SSC CHSL 2026 വിജ്ഞാപനം എത്തി! 🇮🇳✨</text>
-  <text x="320" y="85" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">പ്ലസ് ടു കഴിഞ്ഞവർക്ക് കേന്ദ്ര സർക്കാർ ജോലി</text>
+  <!-- Circular Logo Area -->
+  <!-- White border ring for the logo -->
+  <circle cx="100" cy="100" r="54" fill="#FFFFFF" />
+  <!-- Embedded JPEG Image cropped to a circle -->
+  <image href="55.jpeg" x="50" y="50" width="100" height="100" clip-path="url(#logo-clip)" preserveAspectRatio="xMidYMid slice" />
 
-  <!-- Subtitle -->
-  <text x="320" y="115" font-size="14" fill="#93c5fd" text-anchor="middle">സ്റ്റാഫ് സെലക്ഷൻ കമ്മീഷൻ (SSC) വഴി 2,536 ഒഴിവുകളിലേക്ക് അപേക്ഷ ക്ഷണിച്ചു.</text>
-  <text x="320" y="135" font-size="13" fill="#cbd5e1" text-anchor="middle">(LDC, JSA, Data Entry Operator)</text>
+  <!-- Center Icon (Briefcase) -->
+  <g transform="translate(320, 150)" fill="none" stroke="#F59E0B" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="20" y="40" width="120" height="80" rx="15" />
+    <path d="M 50 40 V 20 A 10 10 0 0 1 60 10 h 40 A 10 10 0 0 1 110 20 V 40" />
+    <path d="M 20 80 H 140" stroke-width="8" />
+  </g>
 
-  <!-- Details Grid -->
-  <!-- Qualification Box -->
-  <rect x="25" y="160" width="285" height="80" rx="8" fill="url(#card-grad)" stroke="#334155"/>
-  <text x="40" y="185" font-size="13" fill="#94a3b8">📌 വിദ്യാഭ്യാസ യോഗ്യത:</text>
-  <text x="40" y="215" font-size="17" font-weight="bold" fill="#ffffff">പ്ലസ് ടു (+2 / 12th Pass)</text>
+  <!-- Main Typography -->
+  <text x="400" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="54" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">JOB UPDATE</text>
+  <text x="400" y="390" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="600" fill="#93C5FD" text-anchor="middle">Latest Recruitment Notification</text>
+  
+  <!-- Divider Line -->
+  <line x1="300" y1="430" x2="500" y2="430" stroke="#334155" stroke-width="2" />
 
-  <!-- Age Box -->
-  <rect x="330" y="160" width="285" height="80" rx="8" fill="url(#card-grad)" stroke="#334155"/>
-  <text x="345" y="185" font-size="13" fill="#94a3b8">📌 പ്രായപരിധി:</text>
-  <text x="345" y="210" font-size="18" font-weight="bold" fill="#ffffff">18 - 27 വയസ്സ്</text>
-  <text x="345" y="228" font-size="11" fill="#cbd5e1">(സംവരണ വിഭാഗങ്ങൾക്ക് ഇളവുകൾ ബാധകം)</text>
-
-  <!-- Salary Box -->
-  <rect x="25" y="255" width="285" height="80" rx="8" fill="url(#card-grad)" stroke="#334155"/>
-  <text x="40" y="280" font-size="13" fill="#94a3b8">📌 ശമ്പളം:</text>
-  <text x="40" y="310" font-size="17" font-weight="bold" fill="#ffffff">₹30,000/- മുതൽ മുകളിലോട്ട്</text>
-
-  <!-- Date Box -->
-  <rect x="330" y="255" width="285" height="80" rx="8" fill="url(#card-grad)" stroke="#ef4444" stroke-width="1.5"/>
-  <text x="345" y="280" font-size="13" fill="#94a3b8">📌 അവസാന തീയതി:</text>
-  <text x="345" y="310" font-size="18" font-weight="bold" fill="#fca5a5">2026 ഒക്ടോബർ 07</text>
+  <!-- Footer Typography -->
+  <text x="400" y="475" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="500" fill="#CBD5E1" text-anchor="middle">Nexia Virtual Desk</text>
+  <text x="400" y="510" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#64748B" text-anchor="middle">Online Application Support</text>
 </svg>

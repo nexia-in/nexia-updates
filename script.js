@@ -59,6 +59,9 @@
     });
   }
 
+  /* WhatsApp glyph, reused by the buttons this script builds */
+  var WA_ICON_SVG = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>';
+
   /** Read a value from the address bar, e.g. ?ref=ibps  ->  "ibps" */
   function getUrlParam(name) {
     try {
@@ -112,6 +115,15 @@
     return new Date() > endOfThatDay;
   }
 
+  /** True when `value` is a real date that has NOT started yet.
+      The start day itself already counts as STARTED (badge turns green
+      at 00:00 of that day in the visitor's own timezone). */
+  function isFuture(value) {
+    var date = parseISODate(value);
+    if (!date) return false;
+    return new Date() < date;
+  }
+
   /** How many full days are left (used only for the "Closing soon" hint). */
   function daysLeft(value) {
     var date = parseISODate(value);
@@ -140,8 +152,7 @@
 
   function applyContactLinks() {
     $$("[data-wa-link]").forEach(function (link) {
-      var messageId = link.getAttribute("data-wa-message-id");
-      link.href = messageId === "ad" ? waLink(adWhatsAppMessage()) : WA_BASE;
+      link.href = WA_BASE;
       link.setAttribute("target", "_blank");
       link.setAttribute("rel", "noopener");
     });
@@ -168,10 +179,9 @@
      The ref is also added to every enquiry message as "Source: ...".
      ======================================================================= */
   var REF = (getUrlParam("ref") || "").trim().toLowerCase();
-  var AD_IS_CLOSED = false;   /* true once the featured opportunity has expired */
 
   function pickAd() {
-    var all = [SITE.currentAd].concat(SITE.otherAds || []);
+    var all = liveAds();
     if (REF) {
       for (var i = 0; i < all.length; i++) {
         if (String(all[i].ref || "").toLowerCase() === REF) return all[i];
@@ -189,110 +199,260 @@
     return "Source: " + (label || REF.toUpperCase() + " Advertisement");
   }
 
-  /** Is the current opportunity already closed? */
-  function adIsClosed() {
-    var checkpoint = AD.expiresOn || AD.lastDate;
+  /** Is one particular opportunity already closed? */
+  function adIsClosed(ad) {
+    var checkpoint = ad.expiresOn || ad.lastDate;
     return isPast(checkpoint);
   }
 
-  /** Ready-made WhatsApp message for the "Ask on WhatsApp" button. */
-  function adWhatsAppMessage() {
+  /** The life of one advertisement:
+        "upcoming" -> before startDate (amber badge)
+        "open"     -> from startDate until the closing day ends (green)
+        "closed"   -> after the closing day (red + greyed card)        */
+  function adState(ad) {
+    if (adIsClosed(ad)) return "closed";
+    if (isFuture(ad.startDate)) return "upcoming";
+    return "open";
+  }
+
+  /** Ready-made WhatsApp message for the "Ask on WhatsApp" button of one ad. */
+  function adWhatsAppMessage(ad) {
     var lines = [
       "Hello " + SITE.business.name + ",",
       "",
       "I saw this update on your website:",
-      AD.title
+      ad.title
     ];
-    if (AD.lastDate) lines.push("Last Date: " + formatDate(AD.lastDateText || AD.lastDate));
+    if (isFuture(ad.startDate)) lines.push("Application Start Date: " + formatDate(ad.startDate));
+    if (ad.lastDate) lines.push("Last Date: " + formatDate(ad.lastDateText || ad.lastDate));
     lines.push("", "Please share the details and help me with the application.");
+    var note = SITE.business && SITE.business.serviceChargeNote;
+    if (note) lines.push(note);
     var source = sourceLine();
-    if (source) lines.push("", source);
+    if (source) lines.push(source);
     return lines.join("\n");
   }
 
-  function renderAd() {
-    var closed = adIsClosed();
+  /** Tiny helper: create an element with a class name. */
+  function el(tag, className) {
+    var node = document.createElement(tag);
+    if (className) node.className = className;
+    return node;
+  }
 
-    /* Text content */
-    setText($("#adCategory"), AD.category || "Opportunity");
-    setText($("#adTitle"), AD.title || "");
-    setText($("#adDescription"), AD.description || "");
+  /* -----------------------------------------------------------------------
+     Build ONE advertisement card.
+     renderAds() calls this once per live advertisement, so every block you
+     copy-paste in content.js automatically becomes a new card on the page.
+     ----------------------------------------------------------------------- */
+  function buildAdCard(ad, index) {
+    var state = adState(ad);
+    var closed = state === "closed";
+    var upcoming = state === "upcoming";
+    var first = index === 0;
 
-    /* Dates */
-    var lastDateText = AD.lastDateText || formatDate(AD.lastDate);
-    var lastDateEl = $("#adLastDate");
-    setText(lastDateEl, closed ? "Closed" : (lastDateText || "—"));
+    var card = el("article", "ad-card reveal");
+    card.setAttribute("data-ad-ref", String(ad.ref || "").toLowerCase());
+    if (first) card.id = "adCard";
 
-    var left = daysLeft(AD.expiresOn || AD.lastDate);
-    if (!closed && left !== null && left >= 0 && left <= 3) {
-      lastDateEl.classList.add("is-urgent");
-      setText(lastDateEl, lastDateText + "  •  closing soon");
+    /* ----- image + status badge ----- */
+    var media = el("div", "ad-media");
+    var img = document.createElement("img");
+    img.src = ad.image || "assets/placeholder.svg";
+    img.alt = ad.imageAlt || ad.title || "Advertisement";
+    img.loading = first ? "eager" : "lazy";
+    img.decoding = "async";
+    img.width = 640;
+    img.height = 360;
+    if (first) img.id = "adImage";
+    safeImage(img, "assets/placeholder.svg", img.alt);
+    media.appendChild(img);
+
+    var status = el("span", "ad-status");
+    if (first) status.id = "adStatus";
+    status.dataset.state = state;
+    status.textContent = state === "closed"   ? "\u25CF Application Closed"
+                       : state === "upcoming" ? "\u25CF UPCOMING \u2014 opens " + formatDate(ad.startDate)
+                       :                        "\u25CF Applications Open";
+    media.appendChild(status);
+    card.appendChild(media);
+
+    var body = el("div", "ad-body");
+
+    /* ----- category + updated chips ----- */
+    var meta = el("div", "ad-meta");
+    var cat = el("span", "chip chip-cat");
+    cat.textContent = ad.category || "Opportunity";
+    var upd = el("span", "chip chip-updated");
+    upd.textContent = "Updated: " + formatDate(ad.updated || "");
+    if (first) { cat.id = "adCategory"; upd.id = "adUpdated"; }
+    meta.appendChild(cat);
+    meta.appendChild(upd);
+    body.appendChild(meta);
+
+    /* ----- title + description ----- */
+    var title = el("h3", "ad-title");
+    title.textContent = ad.title || "";
+    if (first) title.id = "adTitle";
+    body.appendChild(title);
+
+    var desc = el("p", "ad-desc");
+    desc.textContent = ad.description || "";
+    if (first) desc.id = "adDescription";
+    body.appendChild(desc);
+
+    /* ----- qualification + fee boxes (skipped when both are empty) ----- */
+    var qualification = ad.qualification || "";
+    var fee = ad.applicationFee || "";
+    if (qualification || fee) {
+      var facts = el("dl", "ad-facts");
+      if (first) facts.id = "adFacts";
+      var box1 = document.createElement("div");
+      var lab1 = document.createElement("dt");
+      lab1.textContent = "Minimum Qualification";
+      var val1 = document.createElement("dd");
+      val1.textContent = qualification;
+      if (first) val1.id = "adQualification";
+      box1.appendChild(lab1); box1.appendChild(val1);
+      var box2 = document.createElement("div");
+      var lab2 = document.createElement("dt");
+      lab2.textContent = "Official Application Fee";
+      var val2 = document.createElement("dd");
+      val2.textContent = fee;
+      if (first) val2.id = "adFee";
+      box2.appendChild(lab2); box2.appendChild(val2);
+      facts.appendChild(box1); facts.appendChild(box2);
+      body.appendChild(facts);
     }
 
-    setText($("#adUpdated"), "Updated: " + formatDate(AD.updated || ""));
-    setText($("#adUpdatedDate"), formatDate(AD.updated || "—"));
-
-    /* Image */
-    var img = $("#adImage");
-    if (img) {
-      img.src = AD.image || "assets/placeholder.svg";
-      img.alt = AD.imageAlt || (AD.title || "Advertisement");
-      safeImage(img, "assets/placeholder.svg", AD.imageAlt || "Advertisement image not available");
+    /* ----- date boxes: start (optional) + last + updated ----- */
+    var dates = el("dl", "ad-dates");
+    if (ad.startDate) {
+      var boxStart = document.createElement("div");
+      var labStart = document.createElement("dt");
+      labStart.textContent = "Application Start";
+      var valStart = document.createElement("dd");
+      valStart.textContent = formatDate(ad.startDate);
+      if (first) valStart.id = "adStartDate";
+      if (upcoming) valStart.classList.add("is-upcoming-date");
+      boxStart.appendChild(labStart); boxStart.appendChild(valStart);
+      dates.appendChild(boxStart);
     }
-
-    /* Status badge on the image */
-    var status = $("#adStatus");
-    if (status) {
-      setHidden(status, false);
-      if (closed) {
-        status.dataset.state = "closed";
-        setText(status, "● Application Closed");
-      } else {
-        status.dataset.state = "open";
-        setText(status, "● Applications Open");
-      }
-    }
-
-    /* Demo-data warning (isSample: true in content.js) */
-    setHidden($("#demoBanner"), !AD.isSample);
-
-    /* Main button */
-    var card   = $("#adCard");
-    var button = $("#adButton");
-    var verify = $(".ad-verify");
-
+    var boxLast = document.createElement("div");
+    var labLast = document.createElement("dt");
+    labLast.textContent = "Last Date";
+    var valLast = document.createElement("dd");
+    if (first) valLast.id = "adLastDate";
+    var lastText = ad.lastDateText || formatDate(ad.lastDate);
     if (closed) {
-      /* ---- EXPIRED: never present a closed opportunity as open ---- */
-      card.classList.add("is-closed");
-      setHidden(button, true);
-      if (verify) {
-        setText(verify,
-          "This application window has closed" +
-          (AD.expiresOn || AD.lastDate ? " (" + formatDate(AD.expiresOn || AD.lastDate) + ")" : "") +
-          ". Message us on WhatsApp for the latest open opportunities.");
-      }
-    } else if (AD.detailsUrl) {
-      /* ---- Real link supplied: open it in a new tab ---- */
-      button.href = AD.detailsUrl;
-      button.target = "_blank";
-      button.rel = "noopener";
-      setText(button, AD.detailsText || "View Details");
+      valLast.textContent = "Closed";
     } else {
-      /* ---- No link yet: send the customer to WhatsApp instead ---- */
-      button.href = waLink(adWhatsAppMessage());
-      button.target = "_blank";
-      button.rel = "noopener";
-      setText(button, "💬 " + (AD.detailsText || "Get Details on WhatsApp"));
-      if (verify) {
-        setText(verify,
-          "Official link not added yet. Tap the button to ask us on WhatsApp — " +
-          "always verify details on the official website before applying.");
+      valLast.textContent = lastText || "\u2014";
+      var left = daysLeft(ad.expiresOn || ad.lastDate);
+      if (!upcoming && left !== null && left >= 0 && left <= 3) {
+        valLast.classList.add("is-urgent");
+        valLast.textContent = lastText + "  \u2022  closing soon";
       }
     }
+    boxLast.appendChild(labLast); boxLast.appendChild(valLast);
+    var boxUpd = document.createElement("div");
+    var labUpd = document.createElement("dt");
+    labUpd.textContent = "Updated";
+    var valUpd = document.createElement("dd");
+    valUpd.textContent = formatDate(ad.updated || "\u2014");
+    if (first) valUpd.id = "adUpdatedDate";
+    boxUpd.appendChild(labUpd); boxUpd.appendChild(valUpd);
+    dates.appendChild(boxLast); dates.appendChild(boxUpd);
+    body.appendChild(dates);
 
-    /* Page title follows the current ad — good for sharing & bookmarks */
-    if (AD.title) {
-      document.title = AD.title + " | " + SITE.business.name;
+    /* ----- buttons ----- */
+    var actions = el("div", "ad-actions");
+
+    var view = el("a", "btn btn-primary btn-lg");
+    if (first) view.id = "adButton";
+    view.textContent = ad.detailsText || "View Details";
+    if (closed) {
+      view.hidden = true;                       /* expired: button disappears */
+    } else if (ad.detailsUrl && ad.detailsUrl !== "#") {
+      view.href = ad.detailsUrl;                /* real official link */
+      view.target = "_blank";
+      view.rel = "noopener";
+    } else {
+      view.href = "#";                          /* greyed placeholder */
+      view.classList.add("btn-placeholder");
+      view.classList.remove("btn-primary");
+      view.setAttribute("aria-disabled", "true");
+      view.dataset.placeholder = "1";
+      view.title = "Official link will be added soon";
+    }
+    actions.appendChild(view);
+
+    var ask = el("a", "btn btn-ghost btn-lg ad-ask");
+    ask.href = waLink(adWhatsAppMessage(ad));   /* always works, per-ad message */
+    ask.target = "_blank";
+    ask.rel = "noopener";
+    ask.innerHTML = WA_ICON_SVG + "<span>Ask on WhatsApp</span>";
+    actions.appendChild(ask);
+
+    body.appendChild(actions);
+
+    /* ----- small honesty note ----- */
+    var verify = el("p", "ad-verify");
+    if (upcoming) {
+      verify.textContent = "Applications open from " + formatDate(ad.startDate) +
+        ". Tap \"Ask on WhatsApp\" for preparation help \u2014 always verify details " +
+        "on the official website before applying.";
+    } else if (closed) {
+      verify.textContent = "This application window has closed" +
+        ((ad.expiresOn || ad.lastDate) ? " (" + formatDate(ad.expiresOn || ad.lastDate) + ")" : "") +
+        ". Message us on WhatsApp for the latest open opportunities.";
+    } else if (!ad.detailsUrl || ad.detailsUrl === "#") {
+      verify.textContent = "Official link coming soon. Tap \"Ask on WhatsApp\" and we will " +
+        "help you directly \u2014 always verify details on the official website before applying.";
+    } else {
+      verify.textContent = "Always confirm dates and rules on the official website before applying.";
+    }
+    body.appendChild(verify);
+
+    card.appendChild(body);
+    if (closed) card.classList.add("is-closed");
+    if (upcoming) card.classList.add("is-upcoming");
+    return card;
+  }
+
+  /* -----------------------------------------------------------------------
+     ALL live advertisements = currentAd + every uncommented otherAds block.
+     ----------------------------------------------------------------------- */
+  function liveAds() {
+    return [SITE.currentAd].concat(SITE.otherAds || []);
+  }
+
+  function renderAds() {
+    var list = $("#adList");
+    if (!list) return;
+    list.innerHTML = "";
+    liveAds().forEach(function (ad, index) {
+      list.appendChild(buildAdCard(ad, index));
+    });
+
+    /* Demo warning stays visible while ANY card still uses sample data */
+    var anySample = liveAds().some(function (ad) { return ad.isSample; });
+    setHidden($("#demoBanner"), !anySample);
+
+    /* ?ref=rrb  ->  scroll to that card and highlight it with a blue ring */
+    if (REF) {
+      var target = $$(".ad-card", list).filter(function (cardEl) {
+        return cardEl.getAttribute("data-ad-ref") === REF;
+      })[0];
+      if (target) {
+        target.classList.add("ad-highlight");
+        window.setTimeout(function () {
+          try {
+            var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+          } catch (e) { /* very old browser: highlight only, no scrolling */ }
+        }, 400);
+      }
     }
   }
 
@@ -600,8 +760,11 @@
       lines.push((field.messageLine || field.label) + ": " + value);
     });
 
-    if (!AD_IS_CLOSED && AD.title) {
-      lines.push("Seen on page: " + AD.title);
+    var seenAd = REF ? liveAds().filter(function (a) {
+      return String(a.ref || "").toLowerCase() === REF;
+    })[0] : null;
+    if (seenAd && seenAd.title && !adIsClosed(seenAd)) {
+      lines.push("Seen on page: " + seenAd.title);
     }
 
     var source = sourceLine();
@@ -734,14 +897,18 @@
      ======================================================================= */
   function init() {
     applyContactLinks();
-    AD_IS_CLOSED = adIsClosed();
-    renderAd();
+    renderAds();
+    if (AD.title) document.title = AD.title + " | " + SITE.business.name;
     renderTicker();
     renderServices();
     renderCabin();
 
     /* Any element with data-service-open opens that service's popup */
     document.addEventListener("click", function (event) {
+      /* Greyed-out "View Details" placeholders must not jump anywhere */
+      var placeholder = event.target.closest ? event.target.closest("a[data-placeholder='1']") : null;
+      if (placeholder) { event.preventDefault(); return; }
+
       var trigger = event.target.closest ? event.target.closest("[data-service-open]") : null;
       if (trigger) {
         event.preventDefault();

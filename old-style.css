@@ -404,13 +404,7 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; letter-spacing: -.01em; }
 .ad-status[data-state="upcoming"] { background: rgba(180, 83, 9, .95); }  /* amber = waiting */
 .ad-status[data-state="closed"]   { background: rgba(153, 27, 27, .94); }
 
-.ad-body {
-  padding: 16px;
-  min-width: 0;
-  /* If a single word (like a long Malayalam word) is wider than the card,
-     break the word instead of letting it push the layout out. */
-  overflow-wrap: anywhere;
-}
+.ad-body { padding: 16px; }
 
 .ad-meta {
   display: flex;
@@ -441,15 +435,11 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; letter-spacing: -.01em; }
 
 .ad-facts {
   display: grid;
-  /* minmax(0, 1fr) = the columns are NEVER allowed to stretch because of
-     one long unbreakable word (Malayalam fees etc.). */
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   margin-top: 14px;
 }
-.ad-facts > div,
-.ad-dates > div {
-  min-width: 0;                 /* grid boxes may shrink; words must wrap */
+.ad-facts > div {
   background: #F7F9FD;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
@@ -640,7 +630,7 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; letter-spacing: -.01em; }
 /* The emoji badge is hidden on phones (the thumbnail already shows the art) */
 .service-icon { display: none; }
 
-.service-body { min-width: 0; overflow-wrap: anywhere; }
+.service-body { min-width: 0; }
 .service-title {
   display: block;
   font-size: 1rem;

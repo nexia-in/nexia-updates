@@ -109,13 +109,33 @@ change — only the card content changes.
 | `title`        | Headline of the opportunity. |
 | `description`  | One or two short lines. |
 | `image`        | Path to the image file (see section 4). |
+| `startDate`    | OPTIONAL. The day applications OPEN (`"2026-10-15"`). Before that day the card shows an amber **UPCOMING** badge and an "Application Start" box; ON that day it turns green **Applications Open** by itself. Leave `""` if applications are already open. |
 | `lastDate`     | Best written as `"YYYY-MM-DD"` so the site can auto-close it. Plain text also works (e.g. `"To be announced"`), but then auto-close is off. |
 | `lastDateText` | Optional. If you want the card to show different words than `lastDate`. Usually leave `""`. |
 | `updated`      | The date you last verified/updated this card. Shown to customers. |
 | `expiresOn`    | Optional. If filled, the card closes on THIS date instead of `lastDate`. |
-| `detailsUrl`   | Official link for the button. If left `""`, the button opens WhatsApp with a message about this opportunity (perfect while you have no official link yet). |
+| `qualification` | Text for the **"Minimum Qualification"** box on the card. Leave `""` to hide the box. |
+| `applicationFee` | Text for the **"Official Application Fee"** box on the card. Leave `""` to hide the box. |
+| `detailsUrl`   | Official link for the **View Details** button. While you have no real link, leave `""` (or `"#"`) — the button then shows greyed out as "coming soon" and customers use **Ask on WhatsApp** instead (that button always works and writes the enquiry message automatically). |
 | `detailsText`  | Button label. |
 | `isSample`     | `true` shows a yellow **DEMO CONTENT** warning. Set it to `false` the moment you enter real verified data. |
+
+### The automatic life of every advertisement
+
+Each card moves through three states by itself, looking only at dates:
+
+```
+ before startDate        from startDate            after expiresOn/lastDate
+ ─────────────────  →  ─────────────────────  →  ──────────────────────────
+ 🟠 UPCOMING             🟢 Applications Open       🔴 Application Closed
+ (amber badge,           (green badge,              (red badge, grey image,
+  "Application Start"     Apply button active)       Apply button hidden)
+  box on the card)
+```
+
+You never change the state by hand — you only write the dates once.
+The switch happens at midnight of the start day / end of the closing day,
+in the visitor's own timezone.
 
 ### Automatic "Application Closed" (how it works)
 
@@ -144,6 +164,46 @@ Instead of editing `currentAd` twice a day:
    - `https://your-domain.com` → shows `currentAd` (the default)
 4. Every enquiry message will contain a line like
    `Source: RRB Advertisement`, so you know which ad brought the customer.
+
+---
+
+## 3b. Showing TWO or more live applications at the same time (copy & paste)
+
+Yes — this works exactly the way you imagined:
+
+1. Open `content.js`, section **C. MORE LIVE ADVERTISEMENTS**.
+2. Inside `otherAds: [ ... ]` there is one example block wrapped in
+   comment marks (slash-star at the start, star-slash at the end).
+3. **Copy** that whole block and **paste** it inside the `[ ]`.
+4. On YOUR COPY, delete the comment marks so the values become active.
+5. Change the values: a new `ref` (for example `rrb`, `army`, `navy`),
+   title, description, image, dates…
+6. Save + refresh → a **second card** appears under the first card in
+   "Currently Open Applications".
+7. Need a third? Copy-paste the block again. The order in the list is
+   the order on the page (`currentAd` is always the first card).
+
+Good to know:
+
+- ⚠️ **The words `otherAds: [` and `],` must appear ONLY ONCE in the file.**
+  For ad #3, #4, #5… copy only the `{ ... }` block and put a **comma**
+  after the previous block. If you paste `otherAds: [ ... ],` a second
+  time, JavaScript silently keeps only the last list and your earlier
+  extra cards disappear (no error message!).
+  **Third card not showing?** Search the file (Ctrl + F) for `otherAds:` —
+  if you find it more than once, delete the extra `otherAds: [` and `],`
+  lines and join the ad blocks with commas.
+- Each ad needs its **own `ref`** — it is also the code for links like
+  `?ref=rrb`, which scroll to that card and highlight it with a blue ring.
+- Every card checks its own dates: an expired card automatically shows
+  **"Application Closed"** and hides its button, while the other cards
+  stay open.
+- When an opportunity is completely finished, delete its block (or leave
+  it — it will simply show as closed).
+- The yellow DEMO warning stays visible while **any** card still has
+  `isSample: true`. Set it to `false` card by card as you verify them.
+- Each card's "Ask on WhatsApp" button writes its own message with that
+  card's title, last date and the service-charge line.
 
 ---
 
@@ -176,9 +236,38 @@ Tips:
 - If an image path is wrong or the file is missing, the page automatically
   shows a neutral "Image not available" placeholder — the layout never
   breaks.
-- `assets/branding/og-cover.png` is the picture people see when your link
-  is shared on WhatsApp/Facebook. Regenerate or replace it (1200 × 630 px)
-  whenever you want a new sharing preview.
+- `assets/branding/thumbnail.webp` is the picture people see when your
+  link is shared on WhatsApp / Facebook. See the next section.
+
+---
+
+## 4b. How to change the WhatsApp share THUMBNAIL (thumbnail.webp)
+
+When someone shares your website link in WhatsApp, a small preview card
+with a picture appears. That picture is this one file:
+
+```
+assets/branding/thumbnail.webp
+```
+
+**To change it:**
+
+1. Create your new picture. Best size: **1200 × 630 pixels**
+   (any 16:9 image works; keep the important text in the middle because
+   WhatsApp sometimes crops the edges).
+2. Convert/save it as `.webp` (or use [squoosh.app](https://squoosh.app)).
+3. Rename your file to exactly `thumbnail.webp`.
+4. In GitHub, open `assets/branding/`, delete the old `thumbnail.webp`
+   (trash icon), then **Add file → Upload files** and upload yours. Commit.
+5. Wait for Vercel to redeploy (~30 s).
+
+**Important WhatsApp cache warning:** WhatsApp remembers old previews for
+a long time. After changing the thumbnail, test the share with a "cache
+buster" link once, e.g. `https://your-domain.com/?v=2` — if the new image
+shows there, the normal link will update soon too. Facebook has a
+"Sharing Debugger" tool that refreshes the preview immediately.
+
+No code change is needed — the page already points to this file name.
 
 ---
 
@@ -197,6 +286,16 @@ contact: {
 Change both lines to your new number. Every WhatsApp button and every
 generated enquiry link on the whole page updates automatically — you never
 edit the number anywhere else.
+
+One more useful line lives a little higher, in the `business:` block:
+
+```js
+serviceChargeNote: "Service charges will be applicable extra."
+```
+
+This sentence is automatically added to the ready-made WhatsApp message of
+the advertisement card ("Ask on WhatsApp"). Set it to `""` if you ever want
+to remove it.
 
 ---
 
@@ -407,3 +506,80 @@ nothing to compile.
 - Never publish invented dates, vacancies or eligibility details. Add
   verified information only, and point `detailsUrl` to the official
   source whenever possible.
+
+---
+
+# TROUBLESHOOTING: "My update shows on my computer but NOT on Vercel"
+
+Remember the chain:
+
+```
+YOUR COMPUTER  --upload-->  GITHUB  --auto-->  VERCEL (live site)
+```
+
+Vercel only ever builds what is inside GitHub. Editing files on your PC
+does nothing online until you upload them to GitHub again.
+
+## Step 1 — Find where the chain is broken (2 minutes)
+
+1. Open your repository on GitHub and open `content.js` in the browser:
+   `github.com/YOUR-USERNAME/nexia-virtual-desk/blob/main/content.js`
+   - **Your new title is NOT there** → the break is PC → GitHub.
+     Do **FIX A** below.
+   - **Your new title IS there** → continue to step 2.
+
+2. Trick: your deployed files are public. Open in a private window:
+   `https://your-site.vercel.app/content.js`
+   - Old text there → Vercel has not rebuilt. Do **FIX B**.
+   - New text there but the page still looks old → it is only your
+     browser/WhatsApp cache. Do **FIX C**.
+
+## FIX A — Put the edited files on GitHub (the usual cause)
+
+For `content.js` (text file):
+1. In your repository, click `content.js`.
+2. Click the **pencil icon** (Edit this file).
+3. Press `Ctrl + A` (select all), then `Ctrl + V` (paste your new version
+   from your computer — open it in Notepad/VS Code to copy it).
+4. Click **Commit changes**.
+
+For the advertisement image:
+1. In the repository, open the folder `assets/ads/`.
+2. Click **Add file → Upload files**, drag your new image in, commit.
+3. If GitHub keeps the OLD file next to it, open the old file and click
+   the **trash icon** to delete it, then commit.
+4. **Names must match exactly.** If your new file is called
+   `current-ad.webp` or `ibps-october.jpg`, then open `content.js` on
+   GitHub (pencil icon) and change the line to match, e.g.
+   `image: "assets/ads/current-ad.webp",` — same folder, same spelling,
+   same upper/lower case, same extension. Vercel (Linux) is
+   case-sensitive: `Current-Ad.svg` is NOT `current-ad.svg`.
+
+Wait ~30 seconds, then check the live site in a private window.
+
+## FIX B — GitHub is updated but Vercel did not rebuild
+
+1. Vercel dashboard → your project → **Deployments** tab.
+   A new deployment should appear right after every GitHub commit.
+2. If the newest deployment is not marked **Production / Ready**:
+   - Click the **⋯** menu next to it → **Redeploy** (or
+     **Promote to Production**).
+3. Check the branch: **Settings → Git → Production Branch** must be the
+   branch you upload to (normally `main`). If you accidentally committed
+   to another branch, switch this setting or upload to `main`.
+
+## FIX C — Everything is new, but YOU see the old page (cache)
+
+- Desktop: hard refresh `Ctrl + Shift + R`, or open a private window.
+- Phone: open Chrome **Incognito**. The WhatsApp in-app browser caches
+  very aggressively — never use it to check updates.
+- Make sure you are opening your **production** address
+  (`your-project.vercel.app`), not an old preview address from a previous
+  deployment (those look like `your-project-git-xxxx.vercel.app`).
+
+## Your update routine from now on (60 seconds)
+
+1. Edit `content.js` / swap the image on your computer, test locally.
+2. Upload BOTH changed files to GitHub (pencil icon / Upload files).
+3. Wait ~30 s, check the live site in a private window. Done —
+   Vercel deployed it by itself.

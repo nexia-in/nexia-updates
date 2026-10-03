@@ -46,7 +46,10 @@ var SITE = {
 
   business: {
     name: "Nexia Virtual Desk",
-    tagline: "Your online application supporting team"
+    tagline: "Your online application supporting team",
+    /* This line is automatically added to the ready-made WhatsApp message
+       of the advertisement card ("Ask on WhatsApp"). Set it to "" to remove. */
+    serviceChargeNote: "Service charges will be applicable extra."
   },
 
   /* =======================================================================
@@ -56,13 +59,17 @@ var SITE = {
      Replace these values whenever a new recruitment opens.
 
      FIELD GUIDE
-     ref          : short code used in your WhatsApp ad link, e.g. ?ref=RRB
+     ref          : short code used in your WhatsApp ad link, e.g. ?ref=ibps
                     It is added to every enquiry message as "Source: ...".
      category     : small label above the title, e.g. "Banking Recruitment"
      title        : the headline of the opportunity
      description  : 1-2 short lines. Keep it under about 140 characters.
      image        : path to the image file. Put your image in assets/ads/
      imageAlt     : describe the image for screen readers / Google Images
+     startDate    : OPTIONAL. The day applications OPEN ("2026-10-15").
+                    Before that day the card shows an amber "UPCOMING"
+                    badge; ON that day it automatically turns green
+                    "Applications Open". Leave "" if already open.
      lastDate     : the last date to apply. TWO ways to write it:
                       "2026-10-15"  -> recommended. The site reads this date
                                       and can automatically show
@@ -75,44 +82,76 @@ var SITE = {
      updated      : the date you last checked / updated this card ("2026-10-02")
      expiresOn    : OPTIONAL. The date after which the site must show
                     "Application Closed". Leave as "" to use lastDate.
-     detailsUrl   : the button link — the OFFICIAL website or your WhatsApp.
-                    Leave as "" to send customers to WhatsApp instead.
+     qualification: "Minimum Qualification" shown on the card.
+                    Leave as "" to hide that box.
+     applicationFee: "Official Application Fee" shown on the card.
+                    Leave as "" to hide that box.
+     detailsUrl   : the OFFICIAL link for the "View Details" button.
+                    Leave as "" (or "#") until you have the real link —
+                    the button then shows as a greyed-out placeholder.
      detailsText  : button label, e.g. "View Details" or "Apply Now"
      isSample     : true  = shows a yellow "DEMO CONTENT" warning banner.
                     ALWAYS set this to false once you enter real, verified
                     information. Never publish invented recruitment details.
      ======================================================================= */
   currentAd: {
-    ref: "RRB",
-    category: "Railway Recruitment",
-    title: "RRB Recruitment 2026",
-    description: "Applications are currently open. Check eligibility, important dates and application details.",
+      ref: "ssc-chsl",
+    category: "SSC Recruitment",
+    title: "SSC CHSL Recruitment 2026",
+    description: "Applications are open for Lower Division Clerk (LDC), Junior Secretariat Assistant (JSA), and Data Entry Operator (DEO).",
+    qualification: "12th Pass / Plus Two from a recognised board (Age: 18–27 years)",
+    applicationFee: "₹100 (Women / SC / ST / PwBD / Ex-Servicemen: Nil)",
+    startDate: "2026-09-07",
     image: "assets/ads/current-ad.svg",
-    imageAlt: "RRB Recruitment 2026 advertisement from Nexia Virtual Desk",
-    lastDate: "2026-10-08",
+    imageAlt: "SSC CHSL Recruitment 2026 advertisement from Nexia Virtual Desk",
+    lastDate: "2026-10-07",
     lastDateText: "",
-    updated: "2026-10-08",
-    expiresOn: "",
+    updated: "2026-10-03",
+    expiresOn: "2026-10-07",
     detailsUrl: "",
     detailsText: "View Details",
     isSample: false
-  },
+    },
 
   /* =======================================================================
-     C. OTHER ADVERTISEMENTS   (OPTIONAL — LEAVE EMPTY IF YOU DON'T NEED IT)
+     C. MORE LIVE ADVERTISEMENTS — THE COPY & PASTE METHOD
      -----------------------------------------------------------------------
-     Sometimes you run more than one WhatsApp advertisement at the same time
-     (IBPS today, RRB tomorrow). Instead of editing currentAd every time,
-     you can keep several advertisements here. Each one has its own "ref".
+     Want IBPS and RRB (and Army, Navy...) on the page AT THE SAME TIME?
+     Exactly the way you imagined it:
 
-     Your WhatsApp advertisement links then become:
-         https://your-domain.com/?ref=ibps    -> shows the IBPS card
-         https://your-domain.com/?ref=rrb     -> shows the RRB card
-         https://your-domain.com              -> shows currentAd (the default)
+     1. Copy the whole example block below (the one that sits between
+        the comment marks, slash-star at the start and star-slash at end).
+     2. Paste your copy inside the [ ] brackets.
+     3. Delete the comment marks around YOUR COPY (keep the values).
+     4. Change the values. "ref" must be a new short code
+        (rrb, army, navy ...). Each ad needs its own ref.
+     5. Save + refresh -> a SECOND card appears under the first card.
 
-     HOW TO ADD ONE: copy the example below, delete the comment marks that
-     surround it (the slash-star at the start and star-slash at the end),
-     and change the values.
+     Need a third advertisement? Copy the block again and repeat.
+     Order in this list = order on the page (currentAd is always first).
+
+     BONUS: a WhatsApp advertisement link like
+         https://your-domain.com/?ref=rrb
+     will automatically scroll to the RRB card and put a blue ring
+     around it, so the customer lands exactly on the right card.
+
+     When an opportunity is fully finished you can delete its block,
+     or leave it — an expired card shows "Application Closed" by itself.
+
+     !!! MOST COMMON MISTAKE — READ ONCE !!!
+     The words   otherAds: [   and   ],   appear ONLY ONCE in this file.
+     For advertisement #3, #4, #5 ... copy ONLY the { ... } block and
+     separate the blocks with commas, like this:
+
+         otherAds: [
+           { ...ad 2... },     <- comma after every block
+           { ...ad 3... },     <- comma
+           { ...ad 4... }      <- last block: NO comma
+         ],
+
+     If you paste "otherAds: [ ... ]," a second time, JavaScript silently
+     keeps only the LAST list — your earlier extra cards disappear
+     without any error message. One label = one list. Always.
      ======================================================================= */
   otherAds: [
     /*
@@ -121,6 +160,9 @@ var SITE = {
       category: "Railway Recruitment",
       title: "RRB Recruitment 2026",
       description: "Sample entry. Replace with verified information only.",
+      qualification: "As per official notification",
+      applicationFee: "As per official notification",
+      startDate: "",
       image: "assets/jobs/sample-job.svg",
       imageAlt: "RRB Recruitment 2026 advertisement",
       lastDate: "2026-11-30",
@@ -132,6 +174,92 @@ var SITE = {
       isSample: true
     }
     */
+   
+
+  // 2. Cochin Shipyard Limited (CSL)
+  {
+    ref: "csl-apprentices",
+    category: "PSU Recruitment",
+    title: "Cochin Shipyard Apprenticeship 2026",
+    description: "Applications are open for Trade Apprentices and Technician Vocational Apprentices.",
+    qualification: "10th Pass (SSLC) with ITI (NTC) / VHSE (Plus Two Vocational)",
+    applicationFee: "Nil (അപേക്ഷാ ഫീസ് ഇല്ല)",
+    startDate: "2026-09-16",
+    image: "assets/ads/current-ad.svg",
+    imageAlt: "Cochin Shipyard Limited Apprenticeship 2026 advertisement from Nexia Virtual Desk",
+    lastDate: "2026-10-08",
+    lastDateText: "",
+    updated: "2026-10-03",
+    expiresOn: "2026-10-08",
+    detailsUrl: "",
+    detailsText: "View Details",
+    isSample: false
+  },
+
+  // 3. High Court of Kerala (Office Attendant)
+  {
+    ref: "high-court-oa",
+    category: "Kerala High Court Recruitment",
+    title: "High Court of Kerala Office Attendant Recruitment 2026",
+    description: "Applications are open for Office Attendant (OA) post.",
+    qualification: "Passed SSLC or equivalent, Graduation പൂർത്തിയാക്കിയവർ അപേക്ഷിക്കാൻ പാടില്ല (Age: 18 – 40 years)",
+    applicationFee: "₹500 (SC / ST / അർഹരായ ഭിന്നശേഷിക്കാർ: ഫീസ് ഇല്ല)",
+    startDate: "2026-09-23",
+    image: "assets/ads/current-ad.svg",
+    imageAlt: "High Court of Kerala Office Attendant Recruitment 2026 advertisement from Nexia Virtual Desk",
+    lastDate: "2026-10-26",
+    lastDateText: "",
+    updated: "2026-10-03",
+    expiresOn: "2026-10-26",
+    detailsUrl: "",
+    detailsText: "View Details",
+    isSample: false
+  },
+
+  // 4. RRB NTPC (Graduate Level)
+  {
+    ref: "rrb-ntpc-grad",
+    category: "Railway Recruitment",
+    title: "RRB NTPC (Graduate Level) Recruitment 2026",
+    description: "Applications are open for Station Master, Goods Train Manager, and Senior Commercial cum Ticket Clerk.",
+    qualification: "Any Bachelor’s Degree / Graduation (Age: 18–36 years)",
+    applicationFee: "₹500 (SC / ST / Ex-SM / PwBD / Female / EBC: ₹250; പരീക്ഷ എഴുതുമ്പോൾ റീഫണ്ട് ലഭിക്കും)",
+    startDate: "2026-10-08",
+    image: "assets/ads/upcoming-ad.svg",
+    imageAlt: "RRB NTPC Graduate Level Recruitment 2026 advertisement from Nexia Virtual Desk",
+    lastDate: "2026-11-06",
+    lastDateText: "",
+    updated: "2026-10-03",
+    expiresOn: "2026-11-06",
+    detailsUrl: "",
+    detailsText: "View Details",
+    isSample: false
+    
+  },
+
+  // 5. RRB upcoming
+{
+  ref: "rrb-ntpc-12th",
+  category: "Railway Recruitment",
+  title: "RRB NTPC (12th Level) Recruitment 2026",
+  description: "Applications opening soon for Junior Clerk cum Typist, Account Clerk cum Typist, Trains Clerk, and Commercial cum Ticket Clerk.",
+  qualification: "12th Pass / Plus Two from a recognized board (Age: 18 – 30/33 years)",
+  applicationFee: "₹500 (SC / ST / PwD / വനിത / EWS: ₹250; CBT-1 പരീക്ഷ എഴുതിയാൽ ഫീസ് തിരികെ ലഭിക്കും)2121212121 ",
+  startDate: "2026-10-15",
+  image: "assets/ads/upcoming-ad.svg",
+  imageAlt: "RRB NTPC 12th Level Recruitment 2026 advertisement from Nexia Virtual Desk",
+  lastDate: "2026-11-13",
+  lastDateText: "",
+  updated: "2026-10-03",
+  expiresOn: "2026-11-13",
+  detailsUrl: "",
+  detailsText: "View Details",
+  isSample: false,
+  
+},
+
+
+
   ],
 
   /* Nice readable names shown in the enquiry message as "Source: ..."      */
