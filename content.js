@@ -244,7 +244,7 @@ var SITE = {
   title: "RRB NTPC (12th Level) Recruitment 2026",
   description: "Applications opening soon for Junior Clerk cum Typist, Account Clerk cum Typist, Trains Clerk, and Commercial cum Ticket Clerk.",
   qualification: "12th Pass / Plus Two from a recognized board (Age: 18 – 30/33 years)",
-  applicationFee: "₹500 (SC / ST / PwD / വനിത / EWS: ₹250; CBT-1 പരീക്ഷ എഴുതിയാൽ ഫീസ് തിരികെ ലഭിക്കും)2121212121 ",
+  applicationFee: "₹500 (SC / ST / PwD / വനിത / EWS: ₹250; CBT-1 പരീക്ഷ എഴുതിയാൽ ഫീസ് തിരികെ ലഭിക്കും)",
   startDate: "2026-10-15",
   image: "assets/ads/upcoming-ad.svg",
   imageAlt: "RRB NTPC 12th Level Recruitment 2026 advertisement from Nexia Virtual Desk",
