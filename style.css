@@ -337,12 +337,12 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; letter-spacing: -.01em; }
 
 /* ===== 3. FEATURED OPPORTUNITY CARD(S) ================================== */
 /* One card per live advertisement. Cards stack with a small gap. */
-.ad-list { display: grid; gap: 14px; }
+.opp-list { display: grid; gap: 14px; }
 
-.ad-card { scroll-margin-top: 84px; }        /* sticky header offset */
+.opp-card { scroll-margin-top: 84px; }        /* sticky header offset */
 
 /* Blue ring around the card a ?ref= link points to */
-.ad-highlight {
+.opp-highlight {
   outline: 3px solid var(--accent);
   outline-offset: 4px;
 }
@@ -364,7 +364,7 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; letter-spacing: -.01em; }
   font-size: .82em;
 }
 
-.ad-card {
+.opp-card {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -372,19 +372,19 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; letter-spacing: -.01em; }
   overflow: hidden;
 }
 
-.ad-media {
+.opp-media {
   position: relative;
   background: linear-gradient(135deg, #EAF0FA, #F7F9FD);
   border-bottom: 1px solid var(--line);
   aspect-ratio: 16 / 9;
 }
-.ad-media img {
+.opp-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.ad-status {
+.opp-status {
   position: absolute;
   top: 12px;
   left: 12px;
@@ -400,11 +400,11 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; letter-spacing: -.01em; }
   color: #fff;
   backdrop-filter: blur(4px);
 }
-.ad-status[data-state="open"]     { background: rgba(18, 140, 74, .94); }
-.ad-status[data-state="upcoming"] { background: rgba(180, 83, 9, .95); }  /* amber = waiting */
-.ad-status[data-state="closed"]   { background: rgba(153, 27, 27, .94); }
+.opp-status[data-state="open"]     { background: rgba(18, 140, 74, .94); }
+.opp-status[data-state="upcoming"] { background: rgba(180, 83, 9, .95); }  /* amber = waiting */
+.opp-status[data-state="closed"]   { background: rgba(153, 27, 27, .94); }
 
-.ad-body {
+.opp-body {
   padding: 16px;
   min-width: 0;
   /* If a single word (like a long Malayalam word) is wider than the card,
@@ -412,7 +412,7 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; letter-spacing: -.01em; }
   overflow-wrap: anywhere;
 }
 
-.ad-meta {
+.opp-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -429,17 +429,17 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; letter-spacing: -.01em; }
 .chip-cat     { background: #EAF1FE; color: #12457F; border-color: #D5E3FB; }
 .chip-updated { background: #F3F5F9; color: var(--muted); border-color: var(--line); }
 
-.ad-title {
+.opp-title {
   font-size: clamp(1.2rem, 5.6vw, 1.6rem);
   color: var(--navy);
 }
-.ad-desc {
+.opp-desc {
   color: var(--muted);
   font-size: .94rem;
   margin-top: 6px;
 }
 
-.ad-facts {
+.opp-facts {
   display: grid;
   /* minmax(0, 1fr) = the columns are NEVER allowed to stretch because of
      one long unbreakable word (Malayalam fees etc.). */
@@ -447,63 +447,63 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; letter-spacing: -.01em; }
   gap: 10px;
   margin-top: 14px;
 }
-.ad-facts > div,
-.ad-dates > div {
+.opp-facts > div,
+.opp-dates > div {
   min-width: 0;                 /* grid boxes may shrink; words must wrap */
   background: #F7F9FD;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   padding: 10px 12px;
 }
-.ad-facts dt {
+.opp-facts dt {
   font-size: .7rem;
   text-transform: uppercase;
   letter-spacing: .07em;
   color: var(--muted);
   font-weight: 700;
 }
-.ad-facts dd {
+.opp-facts dd {
   margin: 3px 0 0;
   font-weight: 600;
   color: var(--navy);
   font-size: .9rem;
 }
 
-.ad-dates {
+.opp-dates {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
   gap: 10px;
   margin: 16px 0;
 }
-.ad-dates .is-upcoming-date { color: #B45309; }
-.ad-dates > div {
+.opp-dates .is-upcoming-date { color: #B45309; }
+.opp-dates > div {
   background: #F7F9FD;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   padding: 10px 12px;
 }
-.ad-dates dt {
+.opp-dates dt {
   font-size: .7rem;
   text-transform: uppercase;
   letter-spacing: .07em;
   color: var(--muted);
   font-weight: 700;
 }
-.ad-dates dd {
+.opp-dates dd {
   margin: 3px 0 0;
   font-weight: 700;
   color: var(--navy);
   font-size: .95rem;
 }
-.ad-dates .is-urgent { color: var(--danger); }
+.opp-dates .is-urgent { color: var(--danger); }
 
-.ad-actions {
+.opp-actions {
   display: grid;
   gap: 10px;
 }
-.ad-actions .btn { width: 100%; }
+.opp-actions .btn { width: 100%; }
 
-.ad-verify {
+.opp-verify {
   margin-top: 14px;
   font-size: .78rem;
   color: var(--muted);
@@ -512,9 +512,9 @@ h1, h2, h3 { line-height: 1.2; font-weight: 700; letter-spacing: -.01em; }
 }
 
 /* Expired state: card visibly de-emphasised (never colour alone) */
-.ad-card.is-closed { box-shadow: var(--shadow-sm); }
-.ad-card.is-closed .ad-media { filter: grayscale(.55); opacity: .85; }
-.ad-card.is-closed .ad-title::after {
+.opp-card.is-closed { box-shadow: var(--shadow-sm); }
+.opp-card.is-closed .opp-media { filter: grayscale(.55); opacity: .85; }
+.opp-card.is-closed .opp-title::after {
   content: " — Closed";
   color: var(--danger);
   font-size: .8em;
@@ -990,10 +990,10 @@ select.field-input {
   .service-card.no-media { padding: 18px; }
   .service-card.no-media .service-icon { margin-top: 0; margin-bottom: 12px; }
 
-  .ad-card { display: grid; grid-template-columns: 1.05fr 1fr; }
-  .ad-media { aspect-ratio: auto; border-bottom: 0; border-right: 1px solid var(--line); min-height: 300px; }
-  .ad-body { padding: 24px; }
-  .ad-actions { grid-template-columns: 1fr 1fr; }
+  .opp-card { display: grid; grid-template-columns: 1.05fr 1fr; }
+  .opp-media { aspect-ratio: auto; border-bottom: 0; border-right: 1px solid var(--line); min-height: 300px; }
+  .opp-body { padding: 24px; }
+  .opp-actions { grid-template-columns: 1fr 1fr; }
 
   .panel-ig { display: grid; grid-template-columns: 1.5fr auto; align-items: center; gap: 20px; padding: 26px; }
   .panel-ig-art { display: flex; gap: 12px; align-items: center; }
