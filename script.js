@@ -251,25 +251,40 @@
     var upcoming = state === "upcoming";
     var first = index === 0;
 
-    var card = el("article", "ad-card reveal");
-    card.setAttribute("data-ad-ref", String(ad.ref || "").toLowerCase());
-    if (first) card.id = "adCard";
+    var card = el("article", "opp-card reveal");
+    card.setAttribute("data-opp-ref", String(ad.ref || "").toLowerCase());
+    if (first) card.id = "oppCard";
 
     /* ----- image + status badge ----- */
-    var media = el("div", "ad-media");
+    var media = el("div", "opp-media");
     var img = document.createElement("img");
-    img.src = ad.image || "assets/placeholder.svg";
     img.alt = ad.imageAlt || ad.title || "Advertisement";
     img.loading = first ? "eager" : "lazy";
     img.decoding = "async";
     img.width = 640;
     img.height = 360;
-    if (first) img.id = "adImage";
-    safeImage(img, "assets/placeholder.svg", img.alt);
+    if (first) img.id = "oppImage";
+
+    /* AD-BLOCK SAFE LOOKUP ORDER for the poster:
+       1. assets/posters/...   (the new ad-blocker-safe folder)
+       2. the exact path written in content.js (old paths still work)
+       3. the neutral placeholder (never a broken image icon)          */
+    var wanted = ad.image || "assets/placeholder.svg";
+    var tries = [
+      wanted.replace("assets/ads/", "assets/posters/"),
+      wanted,
+      "assets/placeholder.svg"
+    ].filter(function (value, i, self) { return self.indexOf(value) === i; });
+    var tryIndex = 0;
+    img.src = tries[0];
+    img.addEventListener("error", function () {
+      tryIndex += 1;
+      if (tryIndex < tries.length) img.src = tries[tryIndex];
+    });
     media.appendChild(img);
 
-    var status = el("span", "ad-status");
-    if (first) status.id = "adStatus";
+    var status = el("span", "opp-status");
+    if (first) status.id = "oppStatus";
     status.dataset.state = state;
     status.textContent = state === "closed"   ? "\u25CF Application Closed"
                        : state === "upcoming" ? "\u25CF UPCOMING \u2014 opens " + formatDate(ad.startDate)
@@ -277,63 +292,63 @@
     media.appendChild(status);
     card.appendChild(media);
 
-    var body = el("div", "ad-body");
+    var body = el("div", "opp-body");
 
     /* ----- category + updated chips ----- */
-    var meta = el("div", "ad-meta");
+    var meta = el("div", "opp-meta");
     var cat = el("span", "chip chip-cat");
     cat.textContent = ad.category || "Opportunity";
     var upd = el("span", "chip chip-updated");
     upd.textContent = "Updated: " + formatDate(ad.updated || "");
-    if (first) { cat.id = "adCategory"; upd.id = "adUpdated"; }
+    if (first) { cat.id = "oppCategory"; upd.id = "oppUpdated"; }
     meta.appendChild(cat);
     meta.appendChild(upd);
     body.appendChild(meta);
 
     /* ----- title + description ----- */
-    var title = el("h3", "ad-title");
+    var title = el("h3", "opp-title");
     title.textContent = ad.title || "";
-    if (first) title.id = "adTitle";
+    if (first) title.id = "oppTitle";
     body.appendChild(title);
 
-    var desc = el("p", "ad-desc");
+    var desc = el("p", "opp-desc");
     desc.textContent = ad.description || "";
-    if (first) desc.id = "adDescription";
+    if (first) desc.id = "oppDescription";
     body.appendChild(desc);
 
     /* ----- qualification + fee boxes (skipped when both are empty) ----- */
     var qualification = ad.qualification || "";
     var fee = ad.applicationFee || "";
     if (qualification || fee) {
-      var facts = el("dl", "ad-facts");
-      if (first) facts.id = "adFacts";
+      var facts = el("dl", "opp-facts");
+      if (first) facts.id = "oppFacts";
       var box1 = document.createElement("div");
       var lab1 = document.createElement("dt");
       lab1.textContent = "Minimum Qualification";
       var val1 = document.createElement("dd");
       val1.textContent = qualification;
-      if (first) val1.id = "adQualification";
+      if (first) val1.id = "oppQualification";
       box1.appendChild(lab1); box1.appendChild(val1);
       var box2 = document.createElement("div");
       var lab2 = document.createElement("dt");
       lab2.textContent = "Official Application Fee";
       var val2 = document.createElement("dd");
       val2.textContent = fee;
-      if (first) val2.id = "adFee";
+      if (first) val2.id = "oppFee";
       box2.appendChild(lab2); box2.appendChild(val2);
       facts.appendChild(box1); facts.appendChild(box2);
       body.appendChild(facts);
     }
 
     /* ----- date boxes: start (optional) + last + updated ----- */
-    var dates = el("dl", "ad-dates");
+    var dates = el("dl", "opp-dates");
     if (ad.startDate) {
       var boxStart = document.createElement("div");
       var labStart = document.createElement("dt");
       labStart.textContent = "Application Start";
       var valStart = document.createElement("dd");
       valStart.textContent = formatDate(ad.startDate);
-      if (first) valStart.id = "adStartDate";
+      if (first) valStart.id = "oppStartDate";
       if (upcoming) valStart.classList.add("is-upcoming-date");
       boxStart.appendChild(labStart); boxStart.appendChild(valStart);
       dates.appendChild(boxStart);
@@ -342,7 +357,7 @@
     var labLast = document.createElement("dt");
     labLast.textContent = "Last Date";
     var valLast = document.createElement("dd");
-    if (first) valLast.id = "adLastDate";
+    if (first) valLast.id = "oppLastDate";
     var lastText = ad.lastDateText || formatDate(ad.lastDate);
     if (closed) {
       valLast.textContent = "Closed";
@@ -360,16 +375,16 @@
     labUpd.textContent = "Updated";
     var valUpd = document.createElement("dd");
     valUpd.textContent = formatDate(ad.updated || "\u2014");
-    if (first) valUpd.id = "adUpdatedDate";
+    if (first) valUpd.id = "oppUpdatedDate";
     boxUpd.appendChild(labUpd); boxUpd.appendChild(valUpd);
     dates.appendChild(boxLast); dates.appendChild(boxUpd);
     body.appendChild(dates);
 
     /* ----- buttons ----- */
-    var actions = el("div", "ad-actions");
+    var actions = el("div", "opp-actions");
 
     var view = el("a", "btn btn-primary btn-lg");
-    if (first) view.id = "adButton";
+    if (first) view.id = "oppButton";
     view.textContent = ad.detailsText || "View Details";
     if (closed) {
       view.hidden = true;                       /* expired: button disappears */
@@ -387,7 +402,7 @@
     }
     actions.appendChild(view);
 
-    var ask = el("a", "btn btn-ghost btn-lg ad-ask");
+    var ask = el("a", "btn btn-ghost btn-lg opp-ask");
     ask.href = waLink(adWhatsAppMessage(ad));   /* always works, per-ad message */
     ask.target = "_blank";
     ask.rel = "noopener";
@@ -397,7 +412,7 @@
     body.appendChild(actions);
 
     /* ----- small honesty note ----- */
-    var verify = el("p", "ad-verify");
+    var verify = el("p", "opp-verify");
     if (upcoming) {
       verify.textContent = "Applications open from " + formatDate(ad.startDate) +
         ". Tap \"Ask on WhatsApp\" for preparation help \u2014 always verify details " +
@@ -428,7 +443,7 @@
   }
 
   function renderAds() {
-    var list = $("#adList");
+    var list = $("#oppList");
     if (!list) return;
     list.innerHTML = "";
     liveAds().forEach(function (ad, index) {
@@ -441,11 +456,11 @@
 
     /* ?ref=rrb  ->  scroll to that card and highlight it with a blue ring */
     if (REF) {
-      var target = $$(".ad-card", list).filter(function (cardEl) {
-        return cardEl.getAttribute("data-ad-ref") === REF;
+      var target = $$(".opp-card", list).filter(function (cardEl) {
+        return cardEl.getAttribute("data-opp-ref") === REF;
       })[0];
       if (target) {
-        target.classList.add("ad-highlight");
+        target.classList.add("opp-highlight");
         window.setTimeout(function () {
           try {
             var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -931,7 +946,7 @@
     }
 
     /* Mark the static sections for the subtle fade-in, then observe them all */
-    $$(".ad-card, .panel").forEach(function (el) { el.classList.add("reveal"); });
+    $$(".opp-card, .panel").forEach(function (el) { el.classList.add("reveal"); });
     initReveal();
     initFloatingWhatsApp();
   }
