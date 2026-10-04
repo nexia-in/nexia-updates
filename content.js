@@ -108,7 +108,7 @@ var SITE = {
     lastDateText: "",
     updated: "2026-10-03",
     expiresOn: "2026-10-07",
-    detailsUrl: "",
+    detailsUrl: "https://drive.google.com/file/d/1jx3MpY3RHYygEpcqEiXpYFOkf5QeHG_y/view?usp=drive_link",
     detailsText: "View Details",
     isSample: false
     },
