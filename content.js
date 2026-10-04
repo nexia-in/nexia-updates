@@ -191,7 +191,7 @@ var SITE = {
     lastDateText: "",
     updated: "2026-10-03",
     expiresOn: "2026-10-08",
-    detailsUrl: "",
+    detailsUrl: "https://drive.google.com/file/d/1UHNc__6vCoiWOE7nQpB1O6hso8YFKX0x/view?usp=sharing",
     detailsText: "View Details",
     isSample: false
   },
@@ -211,7 +211,7 @@ var SITE = {
     lastDateText: "",
     updated: "2026-10-03",
     expiresOn: "2026-10-26",
-    detailsUrl: "",
+    detailsUrl: "https://drive.google.com/file/d/1E3KtMxOj9G0dKQtVQTI35ahuOFmLld1k/view?usp=sharing",
     detailsText: "View Details",
     isSample: false
   },
@@ -231,7 +231,7 @@ var SITE = {
     lastDateText: "",
     updated: "2026-10-03",
     expiresOn: "2026-11-06",
-    detailsUrl: "",
+    detailsUrl: "https://drive.google.com/file/d/18vTpucAYj4W24Ue3JVvq78SL__0-cWn_/view?usp=sharing",
     detailsText: "View Details",
     isSample: false
     
@@ -252,7 +252,7 @@ var SITE = {
   lastDateText: "",
   updated: "2026-10-03",
   expiresOn: "2026-11-13",
-  detailsUrl: "",
+  detailsUrl: "https://drive.google.com/file/d/1aQ5L2E0tsqUclQPY6I8SLF_1LU01v9xi/view?usp=sharing",
   detailsText: "View Details",
   isSample: false,
   
