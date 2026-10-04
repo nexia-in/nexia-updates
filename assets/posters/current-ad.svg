@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <!-- Define a circular clip path for the logo -->
+    <clipPath id="logo-clip">
+      <circle cx="100" cy="100" r="50" />
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#0A192F" />
+  
+  <!-- Decorative Elements -->
+  <!-- Top left orange accent -->
+  <path d="M 0 0 L 250 0 L 0 250 Z" fill="#F59E0B" />
+  <circle cx="750" cy="500" r="150" fill="#172A45" />
+  <circle cx="650" cy="100" r="30" fill="#1E3A8A" opacity="0.5" />
+  <!-- Left edge half-circle matching the original design -->
+  <path d="M 0 250 A 50 50 0 0 1 0 350 Z" fill="#F59E0B" />
+
+  <!-- Circular Logo Area -->
+  <!-- White border ring for the logo -->
+  <circle cx="100" cy="100" r="54" fill="#FFFFFF" />
+  <!-- Embedded JPEG Image cropped to a circle -->
+  <image href="55.jpeg" x="50" y="50" width="100" height="100" clip-path="url(#logo-clip)" preserveAspectRatio="xMidYMid slice" />
+
+  <!-- Center Icon (Briefcase) -->
+  <g transform="translate(320, 150)" fill="none" stroke="#F59E0B" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="20" y="40" width="120" height="80" rx="15" />
+    <path d="M 50 40 V 20 A 10 10 0 0 1 60 10 h 40 A 10 10 0 0 1 110 20 V 40" />
+    <path d="M 20 80 H 140" stroke-width="8" />
+  </g>
+
+  <!-- Main Typography -->
+  <text x="400" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="54" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">JOB UPDATE</text>
+  <text x="400" y="390" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="600" fill="#93C5FD" text-anchor="middle">Latest Recruitment Notification</text>
+  
+  <!-- Divider Line -->
+  <line x1="300" y1="430" x2="500" y2="430" stroke="#334155" stroke-width="2" />
+
+  <!-- Footer Typography -->
+  <text x="400" y="475" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="500" fill="#CBD5E1" text-anchor="middle">Nexia Virtual Desk</text>
+  <text x="400" y="510" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#64748B" text-anchor="middle">Online Application Support</text>
+</svg>
