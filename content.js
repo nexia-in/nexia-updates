@@ -272,7 +272,7 @@ var SITE = {
   lastDateText: "",
   updated: "2026-10-05",
   expiresOn: "2026-11-11",
-  detailsUrl: "", 
+  detailsUrl: "https://drive.google.com/file/d/1Ff4yoAQEwdET3e2lL0rm2tKLPnUAMp74/view?usp=sharing", 
   detailsText: "View Details",
   isSample: false,
 },
