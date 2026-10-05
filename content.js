@@ -257,7 +257,25 @@ var SITE = {
   isSample: false,
   
 },
-
+   // 6. CRPF Sports Quota
+{
+  ref: "crpf-sports-quota-2026",
+  category: "Defence Recruitment",
+  title: "CRPF Sports Quota Recruitment 2026",
+  description: "എഴുത്ത് പരീക്ഷ ഇല്ലാതെ കേന്ദ്ര സർക്കാർ ജോലി നേടാൻ കായികതാരങ്ങൾക്ക് അവസരം. ഹെഡ് കോൺസ്റ്റബിൾ, കോൺസ്റ്റബിൾ തസ്തികകളിലായി 521 ഒഴിവുകൾ.",
+  qualification: "പത്താം ക്ലാസ് / പ്ലസ് ടു വിജയം, ഒപ്പം നിശ്ചിത കായിക യോഗ്യതയും (പ്രായപരിധി: 18 - 23 വയസ്സ്)",
+  applicationFee: "₹100 (വനിതകൾ / SC / ST വിഭാഗങ്ങൾക്ക് ഫീസില്ല)",
+  startDate: "2026-10-12",
+  image: "assets/ads/upcoming-ad.svg",
+  imageAlt: "CRPF Sports Quota Recruitment 2026 advertisement from Nexia Virtual Desk",
+  lastDate: "2026-11-11",
+  lastDateText: "",
+  updated: "2026-10-05",
+  expiresOn: "2026-11-11",
+  detailsUrl: "", 
+  detailsText: "View Details",
+  isSample: false,
+},
 
 
   ],
