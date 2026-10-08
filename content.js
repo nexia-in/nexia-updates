@@ -257,7 +257,125 @@ var SITE = {
   isSample: false,
 },
 
+ // 6. NICL Administrative Officer (AO Scale-I) - Live
+    {
+      ref: "nicl-ao-2026",
+      category: "Insurance Recruitment",
+      title: "NICL Administrative Officer (AO Scale-I) Recruitment 2026",
+      description: "Applications are open for 321 Generalist and Specialist Administrative Officers across India.",
+      qualification: "Any Bachelor’s Degree / Post Graduation with min 60% marks (55% for SC/ST/PwBD) (Age: 21–30 years)",
+      applicationFee: "₹1,000 (SC / ST / PwBD: ₹250)",
+      startDate: "2026-10-08",
+      image: "assets/ads/current-ad.svg",
+      imageAlt: "NICL AO Recruitment 2026 advertisement from Nexia Virtual Desk",
+      lastDate: "2026-10-28",
+      lastDateText: "",
+      updated: "2026-10-08",
+      expiresOn: "2026-10-28",
+      detailsUrl: "",
+      detailsText: "View Details",
+      isSample: false
+    },
 
+    // 7. Canara Bank Apprentice - Live
+    {
+      ref: "canara-bank-apprentice-2026",
+      category: "Banking Recruitment",
+      title: "Canara Bank Graduate Apprentice Recruitment 2026",
+      description: "Applications are open for 3,500 Graduate Apprentice training seats across various branches.",
+      qualification: "Degree / Graduation in any discipline from a recognized University (Age: 20–28 years)",
+      applicationFee: "₹500 (SC / ST / PwBD: Nil)",
+      startDate: "2026-10-01",
+      image: "assets/ads/current-ad.svg",
+      imageAlt: "Canara Bank Apprentice Recruitment 2026 advertisement from Nexia Virtual Desk",
+      lastDate: "2026-10-17",
+      lastDateText: "",
+      updated: "2026-10-08",
+      expiresOn: "2026-10-17",
+      detailsUrl: "",
+      detailsText: "View Details",
+      isSample: false
+    },
+
+    // 8. Supreme Court of India Junior Court Assistant (JCA) - Live
+    {
+      ref: "sci-jca-2026",
+      category: "Court Recruitment",
+      title: "Supreme Court of India Junior Court Assistant (JCA) 2026",
+      description: "Applications are open for 250 Junior Court Assistant (Group 'B' Non-Gazetted) vacancies.",
+      qualification: "Bachelor’s Degree in any discipline + English Typing on Computer (35 wpm) (Age: 18–30 years)",
+      applicationFee: "₹500 (SC / ST / Ex-SM / PwBD: ₹250)",
+      startDate: "2026-10-02",
+      image: "assets/ads/current-ad.svg",
+      imageAlt: "Supreme Court Junior Court Assistant Recruitment 2026 advertisement from Nexia Virtual Desk",
+      lastDate: "2026-10-28",
+      lastDateText: "",
+      updated: "2026-10-08",
+      expiresOn: "2026-10-28",
+      detailsUrl: "",
+      detailsText: "View Details",
+      isSample: false
+    },
+
+    // 9. Indian Coast Guard Navik (GD) & Yantrik - Live
+    {
+      ref: "icg-cgept-2026",
+      category: "Defence Recruitment",
+      title: "Indian Coast Guard Navik (GD) & Yantrik Recruitment 2026",
+      description: "Applications are open for Navik (General Duty) and Yantrik posts in Indian Coast Guard (CGEPT 01/2026).",
+      qualification: "10+2 with Maths & Physics (Navik) / 10th + Engineering Diploma (Yantrik) (Age: 18–22 years)",
+      applicationFee: "₹300 (SC / ST: Nil)",
+      startDate: "2026-10-05",
+      image: "assets/ads/current-ad.svg",
+      imageAlt: "Indian Coast Guard Recruitment 2026 advertisement from Nexia Virtual Desk",
+      lastDate: "2026-10-21",
+      lastDateText: "",
+      updated: "2026-10-08",
+      expiresOn: "2026-10-21",
+      detailsUrl: "",
+      detailsText: "View Details",
+      isSample: false
+    },
+
+    // 10. IOCL Apprentice - Live
+    {
+      ref: "iocl-apprentice-2026",
+      category: "PSU Recruitment",
+      title: "Indian Oil (IOCL) Apprentice Recruitment 2026",
+      description: "Applications are open for 335 Trade, Technician and Graduate Apprentice posts across regions.",
+      qualification: "12th Pass / ITI / Diploma / Any Bachelor’s Degree (Age: 18–24 years)",
+      applicationFee: "Nil (അപേക്ഷാ ഫീസ് ഇല്ല)",
+      startDate: "2026-10-05",
+      image: "assets/ads/current-ad.svg",
+      imageAlt: "IOCL Apprentice Recruitment 2026 advertisement from Nexia Virtual Desk",
+      lastDate: "2026-11-04",
+      lastDateText: "",
+      updated: "2026-10-08",
+      expiresOn: "2026-11-04",
+      detailsUrl: "",
+      detailsText: "View Details",
+      isSample: false
+    },
+
+    // 11. Railway RRC Apprentice - Live
+    {
+      ref: "rrc-nwr-apprentice-2026",
+      category: "Railway Recruitment",
+      title: "Railway RRC Apprentice Recruitment 2026",
+      description: "Applications are open for 2,008 Trade Apprentice positions in North Western Railway divisions.",
+      qualification: "10th Class (min 50% marks) + ITI in relevant trade (Age: 15–24 years)",
+      applicationFee: "₹100 (SC / ST / PwBD / Women: Nil)",
+      startDate: "2026-10-07",
+      image: "assets/ads/current-ad.svg",
+      imageAlt: "RRC Railway Apprentice Recruitment 2026 advertisement from Nexia Virtual Desk",
+      lastDate: "2026-11-06",
+      lastDateText: "",
+      updated: "2026-10-08",
+      expiresOn: "2026-11-06",
+      detailsUrl: "",
+      detailsText: "View Details",
+      isSample: false
+    },
   ],
 
   /* Nice readable names shown in the enquiry message as "Source: ..."      */
