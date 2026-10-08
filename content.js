@@ -35,22 +35,7 @@ var SITE = {
      whatsappNumber -> digits only, country code first, NO + sign, NO spaces
      whatsappDisplay -> what customers see on the page
      ======================================================================= */
-  contact: {
-    whatsappNumber: "919961850698",
-    whatsappDisplay: "+91 99618 50698",
-    instagram: "https://www.instagram.com/nexia_virtual_desk/",
-    instagramHandle: "@nexia_virtual_desk",
-    facebook: "https://www.facebook.com/nexiacare",
-    facebookHandle: "nexiacare"
-  },
-
-  business: {
-    name: "Nexia Virtual Desk",
-    tagline: "Your online application supporting team",
-    /* This line is automatically added to the ready-made WhatsApp message
-       of the advertisement card ("Ask on WhatsApp"). Set it to "" to remove. */
-    serviceChargeNote: "Service charges will be applicable extra."
-  },
+ 
 
   /* =======================================================================
      B. CURRENT FEATURED ADVERTISEMENT   (DYNAMIC — CHANGE THIS OFTEN)
@@ -94,24 +79,25 @@ var SITE = {
                     ALWAYS set this to false once you enter real, verified
                     information. Never publish invented recruitment details.
      ======================================================================= */
-  currentAd: {
-      ref: "ssc-chsl",
-    category: "SSC Recruitment",
-    title: "SSC CHSL Recruitment 2026",
-    description: "Applications are open for Lower Division Clerk (LDC), Junior Secretariat Assistant (JSA), and Data Entry Operator (DEO).",
-    qualification: "12th Pass / Plus Two from a recognised board (Age: 18–27 years)",
-    applicationFee: "₹100 (Women / SC / ST / PwBD / Ex-Servicemen: Nil)",
-    startDate: "2026-09-07",
-    image: "assets/ads/current-ad.svg",
-    imageAlt: "SSC CHSL Recruitment 2026 advertisement from Nexia Virtual Desk",
-    lastDate: "2026-10-07",
+  currentAd:  {
+    ref: "rrb-ntpc-grad",
+    category: "Railway Recruitment",
+    title: "RRB NTPC (Graduate Level) Recruitment 2026",
+    description: "Applications are open for Station Master, Goods Train Manager, and Senior Commercial cum Ticket Clerk.",
+    qualification: "Any Bachelor’s Degree / Graduation (Age: 18–36 years)",
+    applicationFee: "₹500 (SC / ST / Ex-SM / PwBD / Female / EBC: ₹250; പരീക്ഷ എഴുതുമ്പോൾ റീഫണ്ട് ലഭിക്കും)",
+    startDate: "2026-10-08",
+    image: "assets/ads/upcoming-ad.svg",
+    imageAlt: "RRB NTPC Graduate Level Recruitment 2026 advertisement from Nexia Virtual Desk",
+    lastDate: "2026-11-06",
     lastDateText: "",
     updated: "2026-10-03",
-    expiresOn: "2026-10-07",
-    detailsUrl: "https://drive.google.com/file/d/1jx3MpY3RHYygEpcqEiXpYFOkf5QeHG_y/view?usp=drive_link",
+    expiresOn: "2026-11-06",
+    detailsUrl: "https://drive.google.com/file/d/18vTpucAYj4W24Ue3JVvq78SL__0-cWn_/view?usp=sharing",
     detailsText: "View Details",
     isSample: false
-    },
+    
+  },
 
   /* =======================================================================
      C. MORE LIVE ADVERTISEMENTS — THE COPY & PASTE METHOD
@@ -217,25 +203,7 @@ var SITE = {
   },
 
   // 4. RRB NTPC (Graduate Level)
-  {
-    ref: "rrb-ntpc-grad",
-    category: "Railway Recruitment",
-    title: "RRB NTPC (Graduate Level) Recruitment 2026",
-    description: "Applications are open for Station Master, Goods Train Manager, and Senior Commercial cum Ticket Clerk.",
-    qualification: "Any Bachelor’s Degree / Graduation (Age: 18–36 years)",
-    applicationFee: "₹500 (SC / ST / Ex-SM / PwBD / Female / EBC: ₹250; പരീക്ഷ എഴുതുമ്പോൾ റീഫണ്ട് ലഭിക്കും)",
-    startDate: "2026-10-08",
-    image: "assets/ads/upcoming-ad.svg",
-    imageAlt: "RRB NTPC Graduate Level Recruitment 2026 advertisement from Nexia Virtual Desk",
-    lastDate: "2026-11-06",
-    lastDateText: "",
-    updated: "2026-10-03",
-    expiresOn: "2026-11-06",
-    detailsUrl: "https://drive.google.com/file/d/18vTpucAYj4W24Ue3JVvq78SL__0-cWn_/view?usp=sharing",
-    detailsText: "View Details",
-    isSample: false
-    
-  },
+ 
 
   // 5. RRB upcoming
 {
