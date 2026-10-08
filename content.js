@@ -272,7 +272,7 @@ var SITE = {
       lastDateText: "",
       updated: "2026-10-08",
       expiresOn: "2026-10-28",
-      detailsUrl: "",
+      detailsUrl: "https://drive.google.com/file/d/1mf4XCDN1KcTrhmUBpKd1v7hfkEe01WjH/view?usp=drive_link",
       detailsText: "View Details",
       isSample: false
     },
@@ -292,7 +292,7 @@ var SITE = {
       lastDateText: "",
       updated: "2026-10-08",
       expiresOn: "2026-10-17",
-      detailsUrl: "",
+      detailsUrl: "https://drive.google.com/file/d/1UvtKa2KrV18ZcDu_vv4EuXnDxcRs1D9w/view?usp=drive_link",
       detailsText: "View Details",
       isSample: false
     },
@@ -312,7 +312,7 @@ var SITE = {
       lastDateText: "",
       updated: "2026-10-08",
       expiresOn: "2026-10-28",
-      detailsUrl: "",
+      detailsUrl: "https://drive.google.com/file/d/1GwzmlWpulc9x7CdcR-BGYrDKJQyT-PV1/view?usp=drive_link",
       detailsText: "View Details",
       isSample: false
     },
@@ -332,7 +332,7 @@ var SITE = {
       lastDateText: "",
       updated: "2026-10-08",
       expiresOn: "2026-10-21",
-      detailsUrl: "",
+      detailsUrl: "https://drive.google.com/file/d/1NMgPGvXhxtK25OHH6N10ja1H7kVZI74d/view?usp=drive_link",
       detailsText: "View Details",
       isSample: false
     },
@@ -352,7 +352,7 @@ var SITE = {
       lastDateText: "",
       updated: "2026-10-08",
       expiresOn: "2026-11-04",
-      detailsUrl: "",
+      detailsUrl: "https://drive.google.com/file/d/1tctxg5gmkFy3vxTmqpllcRU6DFE1tf8v/view?usp=drive_link",
       detailsText: "View Details",
       isSample: false
     },
@@ -372,7 +372,7 @@ var SITE = {
       lastDateText: "",
       updated: "2026-10-08",
       expiresOn: "2026-11-06",
-      detailsUrl: "",
+      detailsUrl: "https://drive.google.com/file/d/1gaL9bHlmnU4F5mDDCCDQoy2232zh9utn/view?usp=drive_link",
       detailsText: "View Details",
       isSample: false
     },
