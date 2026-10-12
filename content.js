@@ -376,6 +376,25 @@ var SITE = {
       detailsText: "View Details",
       isSample: false
     },
+    // 12. Indian Coast Guard Recruitment 2026 - Live
+{
+  ref: "icg-cgept-2026",
+  category: "Indian Coast Guard Recruitment",
+  title: "Indian Coast Guard Navik & Yantrik Recruitment 2026",
+  description: "Applications are open for Navik (General Duty), Navik (Domestic Branch), Yantrik, and Hygienist-I (Total 365 Vacancies).",
+  qualification: "10th / Plus Two (Maths & Physics) / Diploma (Age: 18 – 22 years)",
+  applicationFee: "₹550 (SC / ST വിഭാഗങ്ങൾക്ക് ഫീസ് ഇല്ല)",
+  startDate: "2026-10-06",
+  image: "assets/ads/current-ad.svg",
+  imageAlt: "Indian Coast Guard Recruitment 2026 advertisement from Nexia Virtual Desk",
+  lastDate: "2026-10-21",
+  lastDateText: "",
+  updated: "2026-10-12",
+  expiresOn: "2026-10-21",
+  detailsUrl: "costguard_notification.html", 
+  detailsText: "View Details",
+  isSample: false
+},
   ],
 
   /* Nice readable names shown in the enquiry message as "Source: ..."      */
