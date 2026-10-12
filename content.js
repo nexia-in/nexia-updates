@@ -176,25 +176,7 @@ var SITE = {
     */
    
 
-  // 2. Cochin Shipyard Limited (CSL)
-  {
-    ref: "csl-apprentices",
-    category: "PSU Recruitment",
-    title: "Cochin Shipyard Apprenticeship 2026",
-    description: "Applications are open for Trade Apprentices and Technician Vocational Apprentices.",
-    qualification: "10th Pass (SSLC) with ITI (NTC) / VHSE (Plus Two Vocational)",
-    applicationFee: "Nil (അപേക്ഷാ ഫീസ് ഇല്ല)",
-    startDate: "2026-09-16",
-    image: "assets/ads/current-ad.svg",
-    imageAlt: "Cochin Shipyard Limited Apprenticeship 2026 advertisement from Nexia Virtual Desk",
-    lastDate: "2026-10-08",
-    lastDateText: "",
-    updated: "2026-10-03",
-    expiresOn: "2026-10-08",
-    detailsUrl: "https://drive.google.com/file/d/1UHNc__6vCoiWOE7nQpB1O6hso8YFKX0x/view?usp=sharing",
-    detailsText: "View Details",
-    isSample: false
-  },
+ 
 
   // 3. High Court of Kerala (Office Attendant)
   {
