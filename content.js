@@ -179,26 +179,7 @@ var SITE = {
  
 
   // 3. High Court of Kerala (Office Attendant)
-  {
-    ref: "high-court-oa",
-    category: "Kerala High Court Recruitment",
-    title: "High Court of Kerala Office Attendant Recruitment 2026",
-    description: "Applications are open for Office Attendant (OA) post.",
-    qualification: "Passed SSLC or equivalent, Graduation പൂർത്തിയാക്കിയവർ അപേക്ഷിക്കാൻ പാടില്ല (Age: 18 – 40 years)",
-    applicationFee: "₹500 (SC / ST / അർഹരായ ഭിന്നശേഷിക്കാർ: ഫീസ് ഇല്ല)",
-    startDate: "2026-09-23",
-    image: "assets/ads/current-ad.svg",
-    imageAlt: "High Court of Kerala Office Attendant Recruitment 2026 advertisement from Nexia Virtual Desk",
-    lastDate: "2026-10-26",
-    lastDateText: "",
-    updated: "2026-10-03",
-    expiresOn: "2026-10-26",
-    detailsUrl: "https://drive.google.com/file/d/1E3KtMxOj9G0dKQtVQTI35ahuOFmLld1k/view?usp=sharing",
-    detailsText: "View Details",
-    isSample: false
-  },
-
-  
+    
   // 4. RRB upcoming
 {
   ref: "rrb-ntpc-12th",
@@ -260,25 +241,7 @@ var SITE = {
     },
 
     // 7. Canara Bank Apprentice - Live
-    {
-      ref: "canara-bank-apprentice-2026",
-      category: "Banking Recruitment",
-      title: "Canara Bank Graduate Apprentice Recruitment 2026",
-      description: "Applications are open for 3,500 Graduate Apprentice training seats across various branches.",
-      qualification: "Degree / Graduation in any discipline from a recognized University (Age: 20–28 years)",
-      applicationFee: "₹500 (SC / ST / PwBD: Nil)",
-      startDate: "2026-10-01",
-      image: "assets/ads/current-ad.svg",
-      imageAlt: "Canara Bank Apprentice Recruitment 2026 advertisement from Nexia Virtual Desk",
-      lastDate: "2026-10-17",
-      lastDateText: "",
-      updated: "2026-10-08",
-      expiresOn: "2026-10-17",
-      detailsUrl: "https://drive.google.com/file/d/1UvtKa2KrV18ZcDu_vv4EuXnDxcRs1D9w/view?usp=drive_link",
-      detailsText: "View Details",
-      isSample: false
-    },
-
+   
     // 8. Supreme Court of India Junior Court Assistant (JCA) - Live
     {
       ref: "sci-jca-2026",
@@ -300,25 +263,7 @@ var SITE = {
     },
 
     // 9. Indian Coast Guard Navik (GD) & Yantrik - Live
-    {
-      ref: "icg-cgept-2026",
-      category: "Defence Recruitment",
-      title: "Indian Coast Guard Navik (GD) & Yantrik Recruitment 2026",
-      description: "Applications are open for Navik (General Duty) and Yantrik posts in Indian Coast Guard (CGEPT 01/2026).",
-      qualification: "10+2 with Maths & Physics (Navik) / 10th + Engineering Diploma (Yantrik) (Age: 18–22 years)",
-      applicationFee: "₹300 (SC / ST: Nil)",
-      startDate: "2026-10-05",
-      image: "assets/ads/current-ad.svg",
-      imageAlt: "Indian Coast Guard Recruitment 2026 advertisement from Nexia Virtual Desk",
-      lastDate: "2026-10-21",
-      lastDateText: "",
-      updated: "2026-10-08",
-      expiresOn: "2026-10-21",
-      detailsUrl: "https://drive.google.com/file/d/1NMgPGvXhxtK25OHH6N10ja1H7kVZI74d/view?usp=drive_link",
-      detailsText: "View Details",
-      isSample: false
-    },
-
+   
     // 10. IOCL Apprentice - Live
     {
       ref: "iocl-apprentice-2026",
@@ -359,24 +304,7 @@ var SITE = {
       isSample: false
     },
     // 12. Indian Coast Guard Recruitment 2026 - Live
-{
-  ref: "icg-cgept-2026",
-  category: "Indian Coast Guard Recruitment",
-  title: "Indian Coast Guard Navik & Yantrik Recruitment 2026",
-  description: "Applications are open for Navik (General Duty), Navik (Domestic Branch), Yantrik, and Hygienist-I (Total 365 Vacancies).",
-  qualification: "10th / Plus Two (Maths & Physics) / Diploma (Age: 18 – 22 years)",
-  applicationFee: "₹550 (SC / ST വിഭാഗങ്ങൾക്ക് ഫീസ് ഇല്ല)",
-  startDate: "2026-10-06",
-  image: "assets/ads/current-ad.svg",
-  imageAlt: "Indian Coast Guard Recruitment 2026 advertisement from Nexia Virtual Desk",
-  lastDate: "2026-10-21",
-  lastDateText: "",
-  updated: "2026-10-12",
-  expiresOn: "2026-10-21",
-  detailsUrl: "costguard_notification.html", 
-  detailsText: "View Details",
-  isSample: false
-},
+
   ],
 
   /* Nice readable names shown in the enquiry message as "Source: ..."      */
